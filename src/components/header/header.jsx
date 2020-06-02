@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import HamburgerIcon from "../../assets/icons/post-icon.svg";
 import CartIcon from "../../assets/icons/shopping-cart-icon.svg";
 import FavoriteIcon from "../../assets/icons/heart-icon.svg";
 import NavigationBar from "../navbar/navbar";
+import Menu from "../menu/menu";
+import Hamburger from "../hamburger-menu-button/hamburger";
 
 const Navigation = styled.nav`
 	display: flex;
@@ -43,20 +45,25 @@ const Icon = styled.img`
 	margin-right: 15px;
 `;
 
-const Header = () => (
-	<>
-		<Navigation>
-			<div className="search"></div>
-			<Logo>Parfum.</Logo>
-			<NavIcons>
-				<Icon src={FavoriteIcon} alt="favorite items icon" />
-				<Icon src={CartIcon} alt="shopping cart button" />
-				<HamburgerMenu src={HamburgerIcon} alt="menu button" />
-			</NavIcons>
-		</Navigation>
-		<SearchBar />
-		<NavigationBar />
-	</>
-);
+const Header = () => {
+	const [open, setOpen] = useState(false);
+	const node = useRef();
+	return (
+		<>
+			<Navigation>
+				<div className="search"></div>
+				<Logo>Parfum.</Logo>
+				<NavIcons>
+					<Icon src={FavoriteIcon} alt="favorite items icon" />
+					<Icon src={CartIcon} alt="shopping cart button" />
+					<Hamburger open={open} setOpen={setOpen} />
+				</NavIcons>
+			</Navigation>
+			<SearchBar />
+			<Menu open={open} setOpen={setOpen} />
+			<NavigationBar />
+		</>
+	);
+};
 
 export default Header;
