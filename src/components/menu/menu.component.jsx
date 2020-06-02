@@ -1,16 +1,15 @@
 import React from "react";
 import styled from "styled-components";
-import closeIcon from "../../assets/icons/remove-icon.svg";
 
 const Categories = styled.nav`
 	height: 100vh;
 	width: 100%;
 	position: fixed;
-	top: 14vh;
+	top: 0;
 	left: 0;
 	display: flex;
 	flex-direction: column;
-	justify-content: flex-start;
+	justify-content: center;
 	align-items: center;
 	background-color: white;
 	z-index: 800;
@@ -32,10 +31,10 @@ const MenuElement = styled.li`
 
 const Menu = ({ open, setOpen }) => (
 	<Categories open={open} onClick={() => setOpen(!open)}>
-		<MenuElement>Brands</MenuElement>
+		<MenuElement>Bestsellers</MenuElement>
 		<MenuElement>Women</MenuElement>
 		<MenuElement>Man</MenuElement>
-		<MenuElement>Bestsellers</MenuElement>
+		<MenuElement>New</MenuElement>
 		<MenuElement>Promotions</MenuElement>
 	</Categories>
 );

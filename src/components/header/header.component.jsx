@@ -1,17 +1,20 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import HamburgerIcon from "../../assets/icons/post-icon.svg";
 import CartIcon from "../../assets/icons/shopping-cart-icon.svg";
 import FavoriteIcon from "../../assets/icons/heart-icon.svg";
-import NavigationBar from "../navbar/navbar";
-import Menu from "../menu/menu";
-import Hamburger from "../hamburger-menu-button/hamburger";
+import NavigationBar from "../navbar/navbar.component";
+import Menu from "../menu/menu.component";
+import Hamburger from "../hamburger-menu-button/hamburger.component";
+
+const StyledHeader = styled.header`
+	width: 100vw;
+`;
 
 const Navigation = styled.nav`
 	display: flex;
 	align-items: center;
-	width: 100vw;
 	height: 10vh;
+	width: 100%;
 `;
 
 const NavIcons = styled.div`
@@ -33,12 +36,6 @@ const SearchBar = styled.input`
 	border: 1px solid black;
 `;
 
-const HamburgerMenu = styled.img`
-	height: 35px;
-	width: 35px;
-	margin-right: 15px;
-`;
-
 const Icon = styled.img`
 	height: 25px;
 	width: 25px;
@@ -47,9 +44,12 @@ const Icon = styled.img`
 
 const Header = () => {
 	const [open, setOpen] = useState(false);
-	const node = useRef();
+	useEffect(() => {
+		open && (document.body.style.overflow = "hidden");
+		!open && (document.body.style.overflow = "unset");
+	}, [open]);
 	return (
-		<>
+		<StyledHeader>
 			<Navigation>
 				<div className="search"></div>
 				<Logo>Parfum.</Logo>
@@ -62,7 +62,7 @@ const Header = () => {
 			<SearchBar />
 			<Menu open={open} setOpen={setOpen} />
 			<NavigationBar />
-		</>
+		</StyledHeader>
 	);
 };
 

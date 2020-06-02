@@ -1,5 +1,5 @@
-import React, { ReactComponentElement } from "react";
-import styled, { withTheme, ThemeProvider } from "styled-components";
+import React from "react";
+import styled from "styled-components";
 
 const CustomButton = styled.button`
 	background-color: transparent;
