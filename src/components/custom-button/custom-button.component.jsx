@@ -13,12 +13,14 @@ const CustomButton = styled.button`
 	}
 `;
 
-interface Props {
-	name: string;
-}
+// interface Props {
+// 	name: string;
+// }
 
-const Button: React.FC<Props> = ({ name }) => (
-	<CustomButton>{name}</CustomButton>
-);
+// const Button: React.FC<Props> = ({ name }) => (
+// 	<CustomButton>{name}</CustomButton>
+// );
+
+const Button = ({ name }) => <CustomButton>{name}</CustomButton>;
 
 export default Button;

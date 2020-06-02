@@ -5,19 +5,13 @@ import PreviewSlider from "../../components/preview-slider/preview-slider.compon
 import Button from "../../components/custom-button/custom-button.component";
 import InvertedButton from "../../components/inverted-button/inverted-button.component";
 
-const Directory = styled.div`
-	min-height: 150vh;
-`;
+const Directory = styled.div``;
 
 const Homepage = () => {
-	let name: string = "Test1";
-
 	return (
 		<Directory>
 			<CommercialSlider />
 			<PreviewSlider />
-			<Button name={name} />
-			<InvertedButton name={name} />
 		</Directory>
 	);
 };

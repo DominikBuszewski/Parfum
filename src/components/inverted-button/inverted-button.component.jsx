@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-interface Props {
-	name: string;
-}
+// interface Props {
+// 	name: string;
+// }
 
 const CustomInvertedButton = styled.button`
 	background-color: black;
@@ -18,7 +18,11 @@ const CustomInvertedButton = styled.button`
 	}
 `;
 
-const InvertedButton: React.FC<Props> = ({ name }) => (
+// const InvertedButton: React.FC<Props> = ({ name }) => (
+// 	<CustomInvertedButton>{name}</CustomInvertedButton>
+// );
+
+const InvertedButton = ({ name }) => (
 	<CustomInvertedButton>{name}</CustomInvertedButton>
 );
 
