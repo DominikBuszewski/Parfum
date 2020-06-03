@@ -15,6 +15,8 @@ const CustomInvertedButton = styled.button`
 
 	&:hover {
 		cursor: pointer;
+		background-color: white;
+		color: black;
 	}
 `;
 

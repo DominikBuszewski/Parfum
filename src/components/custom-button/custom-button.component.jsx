@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const CustomButton = styled.button`
-	background-color: transparent;
+	background-color: white;
 	height: 50px;
 	font-size: 1em;
 	min-width: 150px;
@@ -10,6 +10,8 @@ const CustomButton = styled.button`
 
 	&:hover {
 		cursor: pointer;
+		background-color: black;
+		color: white;
 	}
 `;
 
