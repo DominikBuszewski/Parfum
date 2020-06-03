@@ -4,7 +4,7 @@ import CommercialSlider from "../../components/commercial-slider/commercial-slid
 import PreviewSlider from "../../components/preview-slider/preview-slider.component.jsx";
 import Button from "../../components/custom-button/custom-button.component";
 import InvertedButton from "../../components/inverted-button/inverted-button.component";
-import SignInPage from "../Sign-in/Sign-in";
+import SignInAndSignUpPage from "../SignInAndSignUp/SignInAndSignUp";
 
 const Directory = styled.div``;
 
@@ -13,7 +13,7 @@ const Homepage = () => {
 		<Directory>
 			<CommercialSlider />
 			<PreviewSlider />
-			<SignInPage />
+			<SignInAndSignUpPage />
 		</Directory>
 	);
 };

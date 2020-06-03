@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import SignIn from "../../components/sign-in/sign-in.component";
+import SignUp from "../../components/sign-up/sign-up.component";
 
 const StyledSignInPage = styled.div`
 	min-height: 90vw;
@@ -9,16 +10,7 @@ const StyledSignInPage = styled.div`
 	flex-direction: column;
 `;
 
-const StyledSignInSection = styled.div`
-	width: 100%;
-	height: 50vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-color: black;
-`;
-
-const StyledRegisterSection = styled.div`
+const StyledSignInOrSignUp = styled.div`
 	width: 100%;
 	height: 50vh;
 	display: flex;
@@ -26,13 +18,15 @@ const StyledRegisterSection = styled.div`
 	align-items: center;
 `;
 
-const SignInPage = () => (
+const SignInAndSignUpPage = () => (
 	<StyledSignInPage>
-		<StyledSignInSection>
+		<StyledSignInOrSignUp>
 			<SignIn />
-		</StyledSignInSection>
-		<StyledRegisterSection />
+		</StyledSignInOrSignUp>
+		<StyledSignInOrSignUp>
+			<SignUp />
+		</StyledSignInOrSignUp>
 	</StyledSignInPage>
 );
 
-export default SignInPage;
+export default SignInAndSignUpPage;

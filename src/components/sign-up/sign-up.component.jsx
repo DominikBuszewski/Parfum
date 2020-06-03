@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { auth, signInWithGoogle } from "../../firebase/firebase";
 import Button from "../custom-button/custom-button.component";
-import InvertedButton from "../inverted-button/inverted-button.component";
 
 const StyledSignIn = styled.div`
 	background-color: white;
@@ -42,21 +40,32 @@ const StyledLabel = styled.label`
 	text-align: left;
 `;
 
-const SignIn = () => {
+const SignUp = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [name, setName] = useState("");
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		console.log(email, password);
+		console.log(email, password, name);
 		setEmail("");
 		setPassword("");
+		setName("");
 	};
 	return (
 		<StyledSignIn>
-			<Headline2>I already have an account</Headline2>
+			<Headline2>Register new account</Headline2>
 
 			<FormInput onSubmit={handleSubmit}>
+				<StyledLabel>Name</StyledLabel>
+				<StyledInput
+					name="text"
+					type="text"
+					onChange={(event) => setName(event.target.value)}
+					value={name}
+					label="name"
+					required
+				/>
 				<StyledLabel>Email</StyledLabel>
 				<StyledInput
 					name="email"
@@ -76,12 +85,11 @@ const SignIn = () => {
 					required
 				/>
 				<ButtonContainer>
-					<Button name={"Sign In"} type="submit" />
-					<InvertedButton name={"Sign in with google"} />
+					<Button name={"Sign Up"} type="submit" />
 				</ButtonContainer>
 			</FormInput>
 		</StyledSignIn>
 	);
 };
 
-export default SignIn;
+export default SignUp;
