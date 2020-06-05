@@ -5,7 +5,7 @@ import styled from "styled-components";
 // 	name: string;
 // }
 
-const CustomInvertedButton = styled.button`
+const StyledInvertedButton = styled.button`
 	background-color: black;
 	color: white;
 	height: 50px;
@@ -17,6 +17,7 @@ const CustomInvertedButton = styled.button`
 		cursor: pointer;
 		background-color: white;
 		color: black;
+		border: 1px solid black;
 	}
 `;
 
@@ -25,7 +26,7 @@ const CustomInvertedButton = styled.button`
 // );
 
 const InvertedButton = ({ name }) => (
-	<CustomInvertedButton>{name}</CustomInvertedButton>
+	<StyledInvertedButton>{name}</StyledInvertedButton>
 );
 
 export default InvertedButton;

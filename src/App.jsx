@@ -5,13 +5,23 @@ import Homepage from "./pages/Homepage/Homepage";
 import { auth } from "./firebase/firebase";
 
 const App = () => {
+	let unsuscribeFromAuth = null;
+
 	const [currentUser, setCurrentUser] = useState(null);
 	useEffect(() => {
-		auth.onAuthStateChanged((user) => setCurrentUser(user));
+		unsuscribeFromAuth = auth.onAuthStateChanged((user) =>
+			setCurrentUser(user)
+		);
+		console.log(currentUser);
 	}, [currentUser]);
+
+	useEffect(() => {
+		return () => unsuscribeFromAuth();
+	}, []);
+
 	return (
 		<div>
-			<Header />
+			<Header currentUser={currentUser} />
 			<Homepage />
 		</div>
 	);

@@ -5,6 +5,7 @@ import FavoriteIcon from "../../assets/icons/heart-icon.svg";
 import NavigationBar from "../navbar/navbar.component";
 import Menu from "../menu/menu.component";
 import Hamburger from "../hamburger-menu-button/hamburger.component";
+import { auth } from "../../firebase/firebase";
 
 const StyledHeader = styled.header`
 	width: 100vw;
@@ -42,7 +43,7 @@ const Icon = styled.img`
 	margin-right: 15px;
 `;
 
-const Header = () => {
+const Header = ({ currentUser }) => {
 	const [open, setOpen] = useState(false);
 	useEffect(() => {
 		open && (document.body.style.overflow = "hidden");
@@ -54,7 +55,11 @@ const Header = () => {
 				<div className="search"></div>
 				<Logo>Parfum.</Logo>
 				<NavIcons>
-					<Icon src={FavoriteIcon} alt="favorite items icon" />
+					{currentUser ? (
+						<p onClick={() => auth.signOut}>Sign Out</p>
+					) : (
+						<p>Sign In</p>
+					)}
 					<Icon src={CartIcon} alt="shopping cart button" />
 					<Hamburger open={open} setOpen={setOpen} />
 				</NavIcons>

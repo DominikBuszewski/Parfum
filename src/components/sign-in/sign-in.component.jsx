@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { auth, signInWithGoogle } from "../../firebase/firebase";
+import { signInWithGoogle } from "../../firebase/firebase";
 import Button from "../custom-button/custom-button.component";
 import InvertedButton from "../inverted-button/inverted-button.component";
 
@@ -52,6 +52,17 @@ const SignIn = () => {
 		setEmail("");
 		setPassword("");
 	};
+	const handleEmailChange = (event) => {
+		const { value } = event.target;
+		setEmail(value);
+		console.log(value);
+	};
+
+	const handlePasswordChange = (event) => {
+		const { value } = event.target;
+		setPassword(value);
+		console.log(value);
+	};
 	return (
 		<StyledSignIn>
 			<Headline2>I already have an account</Headline2>
@@ -61,7 +72,7 @@ const SignIn = () => {
 				<StyledInput
 					name="email"
 					type="email"
-					onChange={(event) => setEmail(event.target.value)}
+					onChange={handleEmailChange}
 					value={email}
 					label="email"
 					required
@@ -71,13 +82,17 @@ const SignIn = () => {
 					name="password"
 					type="password"
 					value={password}
-					onChange={(event) => setPassword(event.target.value)}
+					onChange={handlePasswordChange}
+					// onChange={(event) => setPassword(event.target)}
 					label="password"
 					required
 				/>
 				<ButtonContainer>
 					<Button name={"Sign In"} type="submit" />
-					<InvertedButton name={"Sign in with google"} />
+					<InvertedButton
+						name={"Sign in with google"}
+						onClick={signInWithGoogle}
+					/>
 				</ButtonContainer>
 			</FormInput>
 		</StyledSignIn>
