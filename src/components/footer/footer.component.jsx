@@ -16,7 +16,12 @@ const Footer = () => {
 	// const deliveryToggleHandler = () => (setDeliveryMenu(!deliveryMenu));
 	return (
 		<StyledFooter>
-			<FooterOption title={"Delivery"} />
+			<FooterOption title={"DELIVERY"} props={["UPS", "TNT", "FEDEX", "DHL"]} />
+			<FooterOption title={"PAYMENT"} props={["BLIK", "VISA", "MASTERCARD"]} />
+			<FooterOption
+				title={"CUSTOMER SERVICE"}
+				props={["Contact", "Reclamations"]}
+			/>
 		</StyledFooter>
 	);
 };

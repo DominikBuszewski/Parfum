@@ -33,23 +33,25 @@ const StyledButton = styled.button`
 	align-items: center;
 	height: 60px;
 	width: 100%;
-	font-size: 2em;
+	font-size: 1.6em;
 	border: none;
+	padding: 10px;
 
 	img {
 		width: 30px;
 		height: 30px;
-		transform: ${({ open }) => (open ? "rotate(-90deg)" : "rotate(90deg)")};
-		transition: 0.6s ease-in-out;
+		transform: ${({ open }) => (open ? "rotate(90deg)" : "rotate(180deg)")};
+		transition: 0.3s ease-in-out;
 		margin-right: 5px;
 	}
 `;
 
-const FooterOption = ({ title }) => {
+const FooterOption = ({ title, props }) => {
 	const [open, setOpen] = useState(false);
 	const toggleHandler = () => {
 		setOpen(!open);
 	};
+	// const props = ["UPS", "DHL", "FEDEX", "TNT"];
 	return (
 		<StyledOption>
 			<StyledButton onClick={toggleHandler} open={open}>
@@ -58,10 +60,9 @@ const FooterOption = ({ title }) => {
 			</StyledButton>
 
 			<StyledList open={open}>
-				<FooterOptionItem name={"UPS"} />
-				<FooterOptionItem name={"DHL"} />
-				<FooterOptionItem name={"FEDEX"} />
-				<FooterOptionItem name={"TNT"} />
+				{props.map((prop) => (
+					<FooterOptionItem key={Math.random()} name={prop} />
+				))}
 			</StyledList>
 		</StyledOption>
 	);
