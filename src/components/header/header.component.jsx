@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import CartIcon from "../../assets/icons/shopping-cart-icon.svg";
-import FavoriteIcon from "../../assets/icons/heart-icon.svg";
+import { Link } from "react-router-dom";
 import NavigationBar from "../navbar/navbar.component";
 import Menu from "../menu/menu.component";
 import Hamburger from "../hamburger-menu-button/hamburger.component";
@@ -60,6 +60,8 @@ const Header = ({ currentUser }) => {
 					) : (
 						<p>Sign In</p>
 					)}
+
+					<Link to="/signin">SIGN IN</Link>
 					<Icon src={CartIcon} alt="shopping cart button" />
 					<Hamburger open={open} setOpen={setOpen} />
 				</NavIcons>
