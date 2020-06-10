@@ -8,7 +8,7 @@ const SliderContainer = styled.div`
 	width: 100%;
 
 	@media ${device.desktop} {
-		width: 50%;
+		width: 35%;
 	}
 `;
 const BlueDeChanelImage = styled.img`

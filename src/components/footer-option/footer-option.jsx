@@ -2,12 +2,17 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import next from "../../assets/icons/next.svg";
 import FooterOptionItem from "../footer-option-item/footer-option-item.component";
+import { colors, device } from "../../theme/main-styles.styles";
 
 const StyledOption = styled.div`
 	width: 100%;
 	margin-top: 10px;
 	border: ${({ open }) => (open ? "none" : "1px solid black")};
 	overflow: hidden;
+
+	@media ${device.desktop} {
+		width: 24%;
+	}
 `;
 
 const LI = styled.li`
@@ -22,6 +27,11 @@ const LI = styled.li`
 const StyledList = styled.ul`
 	display: ${({ open }) => (open ? "block" : "none")};
 	padding: 15px;
+
+	@media ${device.desktop} {
+		display: block;
+		height: 20vh;
+	}
 `;
 
 const StyledButton = styled.button`
@@ -37,12 +47,20 @@ const StyledButton = styled.button`
 	border: none;
 	padding: 10px;
 
+	@media ${device.desktop} {
+		height: 10vh;
+	}
+
 	img {
 		width: 30px;
 		height: 30px;
 		transform: ${({ open }) => (open ? "rotate(90deg)" : "rotate(180deg)")};
 		transition: 0.3s ease-in-out;
 		margin-right: 5px;
+
+		@media ${device.desktop} {
+			display: none;
+		}
 	}
 `;
 
