@@ -89,7 +89,8 @@ const SignIn = () => {
 				/>
 				<ButtonContainer>
 					<Button name={"Sign In"} type="submit" />
-					<InvertedButton
+					<Button
+						primary
 						name={"Sign in with google"}
 						onClick={signInWithGoogle}
 					/>

@@ -2,36 +2,20 @@ import React from "react";
 import styled from "styled-components";
 import blue from "../../assets/images/bleu-de-chanel-parfum.jpg";
 import Slider from "infinite-react-carousel";
-
-// const PreviewWrapper = styled.div`
-// 	height: 40vh;
-// 	width: 100%;
-// 	border: 1px solid green;
-// 	display: flex;
-// 	flex-direction: column;
-// 	justify-content: center;
-// 	align-items: center;
-// `;
-
-// const PreviewContainer = styled.div`
-// 	width: 100%;
-// 	height: 80%;
-// 	border: 1px solid blue;
-// 	overflow-x: scroll;
-// `;
+import { device } from "../../theme/main-styles.styles";
 
 const Headline = styled.h1`
 	font-size: 1.3em;
 	text-align: center;
 	margin-top: 15px;
 	margin-bottom: 10px;
-`;
 
-// const PreviewCollection = styled.div`
-// 	width: 50%;
-// 	height: 95%;
-// 	display: flex;
-// `;
+	@media ${device.desktop} {
+		font-size: 2.5em;
+		margin-top: 35px;
+		margin-bottom: 20px;
+	}
+`;
 
 const PreviewImage = styled.img`
 	width: 100%;
@@ -40,14 +24,22 @@ const PreviewImage = styled.img`
 	padding-right: 15px;
 `;
 
-const StyledSlider = styled.div``;
+const StyledSlider = styled.div`
+	height: 100%;
+	width: 100%;
+
+	@media ${device.desktop} {
+		height: 80%;
+		width: 30%;
+	}
+`;
 
 const PreviewSlider = () => {
 	const settings = {
 		arrows: false,
 		dotsScroll: 4,
 		slidesToShow: 2,
-		wheel: true,
+		wheel: false,
 		dots: true,
 	};
 	return (

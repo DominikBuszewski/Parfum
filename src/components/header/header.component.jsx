@@ -15,7 +15,7 @@ const Navigation = styled.nav`
 	display: flex;
 	align-items: center;
 	height: 10vh;
-	width: 100%;
+	width: 100vw;
 `;
 
 const NavIcons = styled.div`

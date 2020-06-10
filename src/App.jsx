@@ -6,6 +6,7 @@ import { auth } from "./firebase/firebase";
 import Footer from "./components/footer/footer.component";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import SignInAndSignUpPage from "./pages/SignInAndSignUp/SignInAndSignUp";
+import GlobalStyle from "./theme/globalstyles.styles";
 
 const App = () => {
 	// let unsuscribeFromAuth = null;
