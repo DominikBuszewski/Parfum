@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 import FooterOption from "../footer-option/footer-option";
+import Newsletter from "../newsletter/newsletter.component";
 
 const StyledFooter = styled.footer`
 	min-height: 40vh;
 	width: 100vw;
-	background-color: pink;
 	padding: 15px;
 `;
 
@@ -22,6 +22,7 @@ const Footer = () => {
 				title={"Customer Service"}
 				props={["Contact", "Reclamations"]}
 			/>
+			<Newsletter />
 		</StyledFooter>
 	);
 };

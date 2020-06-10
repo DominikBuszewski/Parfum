@@ -27,6 +27,7 @@ const NavIcons = styled.div`
 const Logo = styled.div`
 	font-size: 1.5em;
 	margin-left: 15px;
+	text-decoration: none;
 `;
 
 const SearchBar = styled.input`
@@ -43,6 +44,18 @@ const Icon = styled.img`
 	margin-right: 15px;
 `;
 
+const Links = styled.p`
+	text-decoration: none;
+	margin-right: 10px;
+`;
+
+const LinkWrapper = styled.div`
+	a {
+		text-decoration: none;
+		color: black;
+	}
+`;
+
 const Header = ({ currentUser }) => {
 	const [open, setOpen] = useState(false);
 	useEffect(() => {
@@ -53,15 +66,17 @@ const Header = ({ currentUser }) => {
 		<StyledHeader>
 			<Navigation>
 				<div className="search"></div>
-				<Logo>Parfum.</Logo>
+				<LinkWrapper>
+					<Link to="/">
+						<Logo>Parfum.</Logo>
+					</Link>
+				</LinkWrapper>
 				<NavIcons>
-					{currentUser ? (
-						<p onClick={() => auth.signOut}>Sign Out</p>
-					) : (
-						<p>Sign In</p>
-					)}
-
-					<Link to="/signin">SIGN IN</Link>
+					<LinkWrapper>
+						<Link to="/signin">
+							<Links>SIGN IN</Links>
+						</Link>
+					</LinkWrapper>
 					<Icon src={CartIcon} alt="shopping cart button" />
 					<Hamburger open={open} setOpen={setOpen} />
 				</NavIcons>

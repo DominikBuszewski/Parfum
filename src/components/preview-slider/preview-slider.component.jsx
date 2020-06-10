@@ -23,6 +23,8 @@ import Slider from "infinite-react-carousel";
 const Headline = styled.h1`
 	font-size: 1.3em;
 	text-align: center;
+	margin-top: 15px;
+	margin-bottom: 10px;
 `;
 
 // const PreviewCollection = styled.div`
@@ -34,17 +36,22 @@ const Headline = styled.h1`
 const PreviewImage = styled.img`
 	width: 100%;
 	height: 100%;
+	padding-left: 15px;
+	padding-right: 15px;
 `;
+
+const StyledSlider = styled.div``;
 
 const PreviewSlider = () => {
 	const settings = {
-		arrows: true,
+		arrows: false,
 		dotsScroll: 4,
 		slidesToShow: 2,
 		wheel: true,
+		dots: true,
 	};
 	return (
-		<div>
+		<StyledSlider>
 			<Headline>Bestsellers</Headline>
 			<Slider {...settings}>
 				<div>
@@ -78,7 +85,7 @@ const PreviewSlider = () => {
 					<PreviewImage src={blue} />
 				</div>
 			</Slider>
-		</div>
+		</StyledSlider>
 	);
 };
 
