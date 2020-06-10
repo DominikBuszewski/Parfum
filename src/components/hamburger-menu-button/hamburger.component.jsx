@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { device } from "../../theme/main-styles.styles";
 
 const StyledBurger = styled.button`
 	display: flex;
@@ -12,6 +13,10 @@ const StyledBurger = styled.button`
 	cursor: pointer;
 	padding: 0;
 	z-index: 1000;
+
+	@media ${device.desktop} {
+		display: none;
+	}
 
 	&:focus {
 		outline: none;

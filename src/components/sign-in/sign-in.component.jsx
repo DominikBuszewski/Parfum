@@ -9,6 +9,7 @@ const StyledSignIn = styled.div`
 	display: flex;
 	flex-direction: column;
 	width: 330px;
+	height: 350px;
 `;
 
 const Headline2 = styled.h2`
