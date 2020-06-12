@@ -103,7 +103,7 @@ const Header = ({ currentUser }) => {
 					<Hamburger open={open} setOpen={setOpen} />
 				</NavIcons>
 			</Navigation>
-			<SearchBar />
+			<SearchBar placeholder="Type in item you want to search for" />
 			<Menu open={open} setOpen={setOpen} />
 		</StyledHeader>
 	);

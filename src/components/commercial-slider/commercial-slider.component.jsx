@@ -1,14 +1,17 @@
 import React from "react";
 import Slider from "infinite-react-carousel";
 import blue from "../../assets/images/bleu-de-chanel-parfum.jpg";
+import chanel from "../../assets/images/chanel.jpeg";
 import styled from "styled-components";
 import { device } from "../../theme/main-styles.styles";
 
+const StyledCommercialSlider = styled.section``;
+
 const SliderContainer = styled.div`
-	width: 100%;
+	width: 40vw;
 
 	@media ${device.desktop} {
-		width: 35%;
+		width: 40vw;
 	}
 `;
 const BlueDeChanelImage = styled.img`
@@ -17,6 +20,10 @@ const BlueDeChanelImage = styled.img`
 	margin-top: 2vh;
 	padding-left: 35px;
 	padding-right: 35px;
+
+	@media ${device.desktop} {
+		width: 100%;
+	}
 `;
 
 const CommercialSlider = () => (
@@ -29,7 +36,7 @@ const CommercialSlider = () => (
 			wheel={false}
 		>
 			<div>
-				<BlueDeChanelImage src={blue} />
+				<BlueDeChanelImage src={chanel} />
 			</div>
 			<div>
 				<BlueDeChanelImage src={blue} />

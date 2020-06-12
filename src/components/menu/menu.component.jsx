@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { colors, device } from "../../theme/main-styles.styles";
+import { Link } from "react-router-dom";
 
 const Categories = styled.nav`
 	height: 100vh;
@@ -31,7 +32,8 @@ const Categories = styled.nav`
 	}
 `;
 
-const MenuElement = styled.li`
+const MenuElement = styled(Link)`
+	text-decoration: none;
 	color: black;
 	font-size: 2em;
 	list-style: none;
@@ -50,7 +52,8 @@ const MenuElement = styled.li`
 
 const Menu = ({ open, setOpen }) => (
 	<Categories open={open} onClick={() => setOpen(!open)}>
-		<MenuElement>Bestsellers</MenuElement>
+		<MenuElement to="/shop">Shop</MenuElement>
+		<MenuElement>Top 10</MenuElement>
 		<MenuElement>Women</MenuElement>
 		<MenuElement>Man</MenuElement>
 		<MenuElement>New</MenuElement>

@@ -11,8 +11,8 @@ const StyledLi = styled.li`
 		font-size: 1.5em;
 
 		:hover {
-			background-color: ${colors.dark};
-			color: ${colors.light};
+			border-bottom: 3px solid ${colors.dark};
+			/* color: ${colors.light}; */
 		}
 	}
 `;

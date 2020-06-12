@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import blue from "../../assets/images/bleu-de-chanel-parfum.jpg";
+import aqua from "../../assets/images/aquadigioparfum.png";
 import Slider from "infinite-react-carousel";
 import { device } from "../../theme/main-styles.styles";
 
@@ -34,47 +34,72 @@ const StyledSlider = styled.div`
 	}
 `;
 
+const StyledSliderElement = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	h4 {
+		text-align: center;
+	}
+
+	p {
+		text-align: center;
+	}
+
+	:hover {
+		cursor: pointer;
+		border: 1px solid black;
+	}
+`;
+
 const PreviewSlider = () => {
 	const settings = {
 		arrows: false,
 		dotsScroll: 4,
 		slidesToShow: 2,
+		swipe: true,
 		wheel: false,
 		dots: true,
+		centerMode: true,
 	};
 	return (
 		<StyledSlider>
 			<Headline>Bestsellers</Headline>
 			<Slider {...settings}>
+				<StyledSliderElement>
+					<PreviewImage src={aqua} />
+					<h4>Giorgio Armani</h4>
+					<p>Aqua Di Gio Profumo</p>
+					<p>34.50$ / 50ml</p>
+				</StyledSliderElement>
 				<div>
-					<PreviewImage src={blue} />
+					<PreviewImage src={aqua} />
 				</div>
 				<div>
-					<PreviewImage src={blue} />
+					<PreviewImage src={aqua} />
 				</div>
 				<div>
-					<PreviewImage src={blue} />
+					<PreviewImage src={aqua} />
 				</div>
 				<div>
-					<PreviewImage src={blue} />
+					<PreviewImage src={aqua} />
 				</div>
 				<div>
-					<PreviewImage src={blue} />
+					<PreviewImage src={aqua} />
 				</div>
 				<div>
-					<PreviewImage src={blue} />
+					<PreviewImage src={aqua} />
 				</div>
 				<div>
-					<PreviewImage src={blue} />
+					<PreviewImage src={aqua} />
 				</div>
 				<div>
-					<PreviewImage src={blue} />
+					<PreviewImage src={aqua} />
 				</div>
 				<div>
-					<PreviewImage src={blue} />
-				</div>
-				<div>
-					<PreviewImage src={blue} />
+					<PreviewImage src={aqua} />
 				</div>
 			</Slider>
 		</StyledSlider>

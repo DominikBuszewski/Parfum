@@ -6,12 +6,13 @@ import { colors, device } from "../../theme/main-styles.styles";
 
 const StyledOption = styled.div`
 	width: 100%;
-	margin-top: 10px;
+	/* margin-top: 10px; */
 	border: ${({ open }) => (open ? "none" : "1px solid black")};
 	overflow: hidden;
+	cursor: pointer;
 
 	@media ${device.desktop} {
-		width: 24%;
+		/* width: 24%; */
 	}
 `;
 

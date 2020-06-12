@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { signInWithGoogle } from "../../firebase/firebase";
 import Button from "../custom-button/custom-button.component";
-import InvertedButton from "../inverted-button/inverted-button.component";
 
 const StyledSignIn = styled.div`
 	background-color: white;
