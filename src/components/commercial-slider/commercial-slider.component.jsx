@@ -8,7 +8,7 @@ import { device } from "../../theme/main-styles.styles";
 const StyledCommercialSlider = styled.section``;
 
 const SliderContainer = styled.div`
-	width: 40vw;
+	width: 100vw;
 
 	@media ${device.desktop} {
 		width: 40vw;
