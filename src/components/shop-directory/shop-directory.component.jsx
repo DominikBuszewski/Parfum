@@ -2,109 +2,85 @@ import React from "react";
 import styled from "styled-components";
 import { colors, device } from "../../theme/main-styles.styles";
 import FooterOption from "../footer-option/footer-option";
+import ShopItem from "../shop-item/shop-item.component";
+import aqua from "../../assets/images/aquadigioparfum.png";
 
 const StyledDirectoryContainer = styled.main`
+	background-color: ${colors.light};
 	width: 94%;
+	display: flex;
+	flex-direction: column;
 	min-height: 80vh;
-	display: grid;
-	grid-template-columns: repeat(2, 50%);
-	grid-template-rows: repeat(10, 10%);
+	padding: 10px;
+	margin-top: 50px;
 
 	@media ${device.desktop} {
-		width: 70%;
-		height: 80vh;
+		flex-direction: row;
+		width: 80%;
+		padding: 50px;
+	}
+`;
 
-		grid-template-columns: repeat(5, 20%);
+const StyledContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+
+	@media ${device.desktop} {
+		width: 85%;
 	}
 `;
 
 const StyledDirectoryMenu = styled.nav`
-	grid-row: 1 / span 1;
 	display: flex;
-	position: relative;
 	overflow: visible;
-	justify-content: center;
-
-	@media ${device.desktop} {
-		grid-row: 1 / span 6;
-		overflow: hidden;
-		align-items: center;
-		width: 100%;
-	}
+	width: 100%;
+	height: 10%;
 
 	div {
 		width: 100%;
-		/* height: 100%; */
-		position: absolute;
-		top: 0px;
-		left: 0px;
+	}
 
-		@media ${device.desktop} {
-			top: 37px;
-		}
+	@media ${device.desktop} {
+		width: 15%;
 	}
 `;
 
 const StyledDirectoryHeader = styled.header`
-	grid-column: 2 /2;
-	grid-row: 1/2;
+	height: 7vh;
+
+	width: 100%;
 	display: flex;
-	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	border-bottom: 1px solid black;
-	border-top: 1px solid black;
-	border-right: 1px solid black;
-	height: 95%;
 
 	h3 {
-		display: none;
+		width: 50%;
+
+		@media ${device.desktop} {
+			width: 60%;
+		}
 	}
 
-	@media ${device.desktop} {
-		grid-column: 2 / 6;
-		grid-row: 1/2;
-		flex-direction: row;
-		align-items: flex-end;
-		border-top: none;
-		border-right: none;
-		height: 100%;
-
-		h3 {
-			display: block;
-
-			width: 70%;
-		}
-
-		select {
-			border: none;
-		}
+	select {
+		border: none;
 	}
 `;
 
 const StyledDirectory = styled.section`
-	grid-column: 1 / span 2;
-	grid-row: 2 / span 10;
 	padding: 15px;
 
+	display: grid;
+	grid-template-columns: repeat(2, 50%);
+
 	@media ${device.desktop} {
-		grid-column: 2 / span 10;
+		grid-template-columns: repeat(4, 25%);
 	}
 `;
 
 const ShopDirectory = () => {
 	return (
 		<StyledDirectoryContainer>
-			<StyledDirectoryHeader>
-				<h3>Category</h3>
-
-				<p>Sorty by:</p>
-				<select name="sort-by">
-					<option value="Popularity">Popularity</option>
-					<option value="Price high">Price from highest</option>
-					<option value="Price low">Price from lowest</option>
-				</select>
-			</StyledDirectoryHeader>
 			<StyledDirectoryMenu>
 				<div>
 					<FooterOption
@@ -114,7 +90,81 @@ const ShopDirectory = () => {
 					/>
 				</div>
 			</StyledDirectoryMenu>
-			<StyledDirectory></StyledDirectory>
+			<StyledContainer>
+				<StyledDirectoryHeader>
+					<h3>Category</h3>
+
+					<p>Sorty by:</p>
+					<select name="sort-by">
+						<option value="Popularity">Popularity</option>
+						<option value="Price high">Price from highest</option>
+						<option value="Price low">Price from lowest</option>
+					</select>
+				</StyledDirectoryHeader>
+
+				<StyledDirectory>
+					<ShopItem
+						name={"Aqua di Gio"}
+						brand={"Armani"}
+						imageUrl={aqua}
+						price={"34.99"}
+					/>
+					<ShopItem
+						name={"Aqua di Gio"}
+						brand={"Armani"}
+						imageUrl={aqua}
+						price={"34.99"}
+					/>
+					<ShopItem
+						name={"Aqua di Gio"}
+						brand={"Armani"}
+						imageUrl={aqua}
+						price={"34.99"}
+					/>
+					<ShopItem
+						name={"Aqua di Gio"}
+						brand={"Armani"}
+						imageUrl={aqua}
+						price={"34.99"}
+					/>
+					<ShopItem
+						name={"Aqua di Gio"}
+						brand={"Armani"}
+						imageUrl={aqua}
+						price={"34.99"}
+					/>
+					<ShopItem
+						name={"Aqua di Gio"}
+						brand={"Armani"}
+						imageUrl={aqua}
+						price={"34.99"}
+					/>
+					<ShopItem
+						name={"Aqua di Gio"}
+						brand={"Armani"}
+						imageUrl={aqua}
+						price={"34.99"}
+					/>
+					<ShopItem
+						name={"Aqua di Gio"}
+						brand={"Armani"}
+						imageUrl={aqua}
+						price={"34.99"}
+					/>
+					<ShopItem
+						name={"Aqua di Gio"}
+						brand={"Armani"}
+						imageUrl={aqua}
+						price={"34.99"}
+					/>
+					<ShopItem
+						name={"Aqua di Gio"}
+						brand={"Armani"}
+						imageUrl={aqua}
+						price={"34.99"}
+					/>
+				</StyledDirectory>
+			</StyledContainer>
 		</StyledDirectoryContainer>
 	);
 };

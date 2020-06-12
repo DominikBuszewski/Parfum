@@ -10,6 +10,7 @@ const StyledOption = styled.div`
 	border: ${({ open }) => (open ? "none" : "1px solid black")};
 	overflow: hidden;
 	cursor: pointer;
+	background-color: ${colors.light};
 
 	@media ${device.desktop} {
 		/* width: 24%; */
