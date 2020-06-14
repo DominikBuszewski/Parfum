@@ -16,7 +16,7 @@ const Categories = styled.nav`
 	background-color: ${colors.light};
 	z-index: 800;
 	scroll-behavior: smooth;
-	transform: ${({ open }) => (open ? "translateX(0)" : "translateX(100%)")};
+	transform: ${({ open }) => (open ? "translateY(0)" : "translateY(-100%)")};
 	transition: 1s ease-in-out;
 
 	@media ${device.desktop} {

@@ -26,6 +26,7 @@ const StyledShopItem = styled.div`
 	}
 
 	p {
+		font-family: "montserrat";
 	}
 
 	:hover {

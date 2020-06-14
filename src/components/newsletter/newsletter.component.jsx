@@ -37,6 +37,10 @@ const StyledNewsletter = styled.form`
 	background-color: ${colors.secondary};
 	margin: 5px;
 
+	p {
+		font-family: "montserrat";
+	}
+
 	@media ${device.desktop} {
 		/* width: 1%; */
 	}
@@ -47,6 +51,7 @@ const StyledNewsletterInput = styled.input`
 	height: 50px;
 	margin: 5px 0px 5px 0px;
 	font-size: 1.2em;
+	font-family: "montserrat";
 `;
 
 const Newsletter = () => {
@@ -59,10 +64,10 @@ const Newsletter = () => {
 		<NewsletterContainer>
 			<Headline>Newsletter</Headline>
 			<StyledNewsletter>
-				<h3>
+				<p>
 					Order now and receive the latest news about cosmetics trends, offers
 					and promotions!
-				</h3>
+				</p>
 				<StyledNewsletterInput
 					type="email"
 					placeholder="Enter your email address"

@@ -34,6 +34,7 @@ const CommercialSlider = () => (
 			duration={500}
 			shift={5}
 			wheel={false}
+			arrows={false}
 		>
 			<div>
 				<BlueDeChanelImage src={chanel} />

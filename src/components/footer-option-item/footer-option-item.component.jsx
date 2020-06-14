@@ -6,6 +6,7 @@ const StyledLi = styled.li`
 	list-style: none;
 	font-size: 1.2em;
 	border-bottom: 1px solid black;
+	font-family: "montserrat";
 
 	@media ${device.desktop} {
 		font-size: 1.5em;

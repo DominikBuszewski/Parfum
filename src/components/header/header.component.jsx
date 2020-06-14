@@ -8,19 +8,18 @@ import { auth } from "../../firebase/firebase";
 import { colors, device } from "../../theme/main-styles.styles";
 
 const StyledHeader = styled.header`
-	width: 100vw;
+	width: 100%;
 `;
 
 const Navigation = styled.nav`
 	display: flex;
 	align-items: center;
 	height: 10vh;
-	width: 100vw;
+	width: 100%;
 	position: relative;
 	justify-content: center;
 
 	@media ${device.desktop} {
-		justify-content: center;
 	}
 `;
 
@@ -28,7 +27,7 @@ const NavIcons = styled.div`
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
-	width: 70%;
+	width: 60%;
 
 	@media ${device.desktop} {
 		justify-content: center;
@@ -71,14 +70,11 @@ const Icon = styled.img`
 	margin-right: 15px;
 `;
 
-const Links = styled.p`
-	text-decoration: none;
-	margin-right: 10px;
-`;
-
 const StyledLink = styled(Link)`
 	text-decoration: none;
 	color: ${colors.dark};
+	margin: 0 10px;
+	font-family: "montserrat";
 `;
 
 const Header = ({ currentUser }) => {
@@ -87,6 +83,9 @@ const Header = ({ currentUser }) => {
 		open && (document.body.style.overflow = "hidden");
 		!open && (document.body.style.overflow = "unset");
 	}, [open]);
+	useEffect(() => {
+		return () => setOpen(false);
+	}, []);
 	return (
 		<StyledHeader>
 			<Navigation>
@@ -95,10 +94,13 @@ const Header = ({ currentUser }) => {
 				</StyledLink>
 
 				<NavIcons>
-					<StyledLink to="/signin">
-						<Links>SIGN IN</Links>
-					</StyledLink>
-
+					{currentUser ? (
+						<StyledLink onClick={() => auth.signOut()} to="/">
+							Sign Out
+						</StyledLink>
+					) : (
+						<StyledLink to="/signin">Sign In</StyledLink>
+					)}
 					<Icon src={CartIcon} alt="shopping cart button" />
 					<Hamburger open={open} setOpen={setOpen} />
 				</NavIcons>
