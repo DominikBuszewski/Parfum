@@ -53,11 +53,11 @@ const MenuElement = styled(Link)`
 const Menu = ({ open, setOpen }) => (
 	<Categories open={open} onClick={() => setOpen(!open)}>
 		<MenuElement to="/shop">Shop</MenuElement>
-		<MenuElement>Top 10</MenuElement>
-		<MenuElement>Women</MenuElement>
-		<MenuElement>Man</MenuElement>
-		<MenuElement>New</MenuElement>
-		<MenuElement>Promotions</MenuElement>
+		<MenuElement to="/shop">Top 10</MenuElement>
+		<MenuElement to="/shop">Women</MenuElement>
+		<MenuElement to="/shop">Man</MenuElement>
+		<MenuElement to="/shop">New</MenuElement>
+		<MenuElement to="/shop">Promotions</MenuElement>
 	</Categories>
 );
 

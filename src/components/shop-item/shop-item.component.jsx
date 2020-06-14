@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { colors, device } from "../../theme/main-styles.styles";
+import { device } from "../../theme/main-styles.styles";
 
 const StyledShopItem = styled.div`
 	/* height: 400px;

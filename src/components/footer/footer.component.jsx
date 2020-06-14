@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { colors, device } from "../../theme/main-styles.styles";
 import FooterOption from "../footer-option/footer-option";
@@ -26,8 +26,6 @@ const StyledFooterOptions = styled.footer`
 		align-items: center;
 	}
 `;
-
-const StyledOptionContainer = styled.div``;
 
 const StyledEnd = styled.div`
 	margin-top: 50px;

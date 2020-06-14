@@ -5,8 +5,6 @@ import chanel from "../../assets/images/chanel.jpeg";
 import styled from "styled-components";
 import { device } from "../../theme/main-styles.styles";
 
-const StyledCommercialSlider = styled.section``;
-
 const SliderContainer = styled.div`
 	width: 100vw;
 
@@ -16,7 +14,6 @@ const SliderContainer = styled.div`
 `;
 const BlueDeChanelImage = styled.img`
 	width: 100%;
-	/* margin-left: 5%; */
 	margin-top: 2vh;
 	padding-left: 35px;
 	padding-right: 35px;

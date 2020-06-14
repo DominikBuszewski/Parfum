@@ -17,15 +17,6 @@ const StyledOption = styled.div`
 	}
 `;
 
-const LI = styled.li`
-	list-style: none;
-	text-align: center;
-	width: 100%;
-	border-bottom: 1px solid black;
-	text-align: left;
-	cursor: pointer;
-`;
-
 const StyledList = styled.ul`
 	display: ${({ open }) => (open ? "block" : "none")};
 	padding: 15px;
@@ -76,7 +67,7 @@ const FooterOption = ({ title, props }) => {
 		<StyledOption>
 			<StyledButton onClick={toggleHandler} open={open}>
 				{title}
-				<img src={next} />
+				<img src={next} alt="" />
 			</StyledButton>
 
 			<StyledList open={open}>

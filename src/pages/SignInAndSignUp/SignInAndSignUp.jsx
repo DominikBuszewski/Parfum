@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import SignIn from "../../components/sign-in/sign-in.component";
 import SignUp from "../../components/sign-up/sign-up.component";
-import { colors, device } from "../../theme/main-styles.styles";
+import { device } from "../../theme/main-styles.styles";
 
 const StyledSignInPage = styled.div`
 	min-height: 100vh;
@@ -13,9 +13,10 @@ const StyledSignInPage = styled.div`
 	align-items: center;
 
 	@media ${device.desktop} {
-		min-height: 70vh;
+		min-height: 80vh;
 		flex-direction: row;
 		width: 100%;
+		justify-content: space-around;
 	}
 `;
 
@@ -27,7 +28,7 @@ const StyledFormContainer = styled.div`
 	align-items: center;
 
 	@media ${device.desktop} {
-		width: 30%;
+		width: 40%;
 		height: 500px;
 	}
 `;

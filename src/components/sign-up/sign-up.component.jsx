@@ -83,6 +83,7 @@ const SignUp = () => {
 					value={password}
 					onChange={(event) => setPassword(event.target.value)}
 					label="password"
+					autocomplete="on"
 					required
 				/>
 				<ButtonContainer>

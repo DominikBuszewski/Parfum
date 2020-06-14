@@ -43,26 +43,26 @@ const StyledLabel = styled.label`
 `;
 
 const SignIn = () => {
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
-
-	const handleSubmit = (event) => {
+	const [userCredentials, setUserCretentials] = useState({
+		email: "",
+		passwrod: "",
+	});
+	const { email, password } = userCredentials;
+	const handleSubmit = async (event) => {
 		event.preventDefault();
 		console.log(email, password);
-		setEmail("");
-		setPassword("");
+		setUserCretentials({ email: "", password: "" });
 	};
-	const handleEmailChange = (event) => {
-		const { value } = event.target;
-		setEmail(value);
-		console.log(value);
+	const handleChange = (event) => {
+		const { value, name } = event.target;
+		setUserCretentials({ ...userCredentials, [name]: value });
 	};
 
-	const handlePasswordChange = (event) => {
-		const { value } = event.target;
-		setPassword(value);
-		console.log(value);
-	};
+	// const handlePasswordChange = (event) => {
+	// 	const { value } = event.target;
+	// 	setPassword(value);
+	// 	console.log(value);
+	// };
 	return (
 		<StyledSignIn>
 			<Headline2>I already have an account</Headline2>
@@ -72,7 +72,7 @@ const SignIn = () => {
 				<StyledInput
 					name="email"
 					type="email"
-					onChange={handleEmailChange}
+					onChange={handleChange}
 					value={email}
 					label="email"
 					required
@@ -82,9 +82,10 @@ const SignIn = () => {
 					name="password"
 					type="password"
 					value={password}
-					onChange={handlePasswordChange}
+					onChange={handleChange}
 					// onChange={(event) => setPassword(event.target)}
 					label="password"
+					autocomplete="on"
 					required
 				/>
 				<ButtonContainer>
