@@ -17,7 +17,8 @@ const Categories = styled.nav`
 	z-index: 800;
 	scroll-behavior: smooth;
 	transform: ${({ open }) => (open ? "translateY(0)" : "translateY(-100%)")};
-	transition: 1s ease-in-out;
+	/* opacity: ${({ open }) => (open ? "1" : "0")}; */
+	/* transition: 1s ease-in; */
 
 	@media ${device.desktop} {
 		height: 5vh;
@@ -26,9 +27,11 @@ const Categories = styled.nav`
 		flex-direction: row;
 		align-items: center;
 		justify-content: center;
+		transition: 0s;
 		transform: translateX(0px);
 		position: relative;
 		border-bottom: 1px black solid;
+		z-index:0;
 	}
 `;
 

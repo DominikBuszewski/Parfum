@@ -15,7 +15,7 @@ const CustomButton = styled.button`
 	text-transform: uppercase;
 	overflow: hidden;
 	transition: 1s all ease; */
-
+		cursor: pointer;
 		position: relative;
 		display: block;
 		color: ${(props) => (props.primary ? `${colors.light}` : `${colors.dark}`)};;
@@ -44,8 +44,8 @@ const CustomButton = styled.button`
  		content: "";
   		position: absolute;
   		top: 50%;
-  		left: 50%;
-  		transform: translate(-50%,-50%);
+  		left: 0%;
+  		transform: translate(-0%,-50%);
   		z-index: -1;
   		transition: all 0.8s ease;
   		width: 0%;
@@ -54,7 +54,6 @@ const CustomButton = styled.button`
 
 	:hover:before {
 		width: 100%;
-		cursor: pointer;
 
 	}
 

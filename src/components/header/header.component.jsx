@@ -6,6 +6,7 @@ import Menu from "../menu/menu.component";
 import Hamburger from "../hamburger-menu-button/hamburger.component";
 import { auth } from "../../firebase/firebase";
 import { colors, device } from "../../theme/main-styles.styles";
+import ShoppingCartDropdown from "../shopping-cart-dropdown/shopping-cart-dropdown.component";
 
 const StyledHeader = styled.header`
 	width: 100%;
@@ -79,6 +80,7 @@ const StyledLink = styled(Link)`
 
 const Header = ({ currentUser }) => {
 	const [open, setOpen] = useState(false);
+	const [toggleCart, setToggleCart] = useState(false);
 	useEffect(() => {
 		open && (document.body.style.overflow = "hidden");
 		!open && (document.body.style.overflow = "unset");
@@ -101,12 +103,19 @@ const Header = ({ currentUser }) => {
 					) : (
 						<StyledLink to="/signin">Sign In</StyledLink>
 					)}
-					<Icon src={CartIcon} alt="shopping cart button" />
+
+					<Icon
+						src={CartIcon}
+						alt="shopping cart button"
+						onClick={() => setToggleCart(!toggleCart)}
+					/>
+
 					<Hamburger open={open} setOpen={setOpen} />
 				</NavIcons>
 			</Navigation>
 			<SearchBar placeholder="Type in item you want to search for" />
 			<Menu open={open} setOpen={setOpen} />
+			<ShoppingCartDropdown toggleCart={toggleCart} />
 		</StyledHeader>
 	);
 };

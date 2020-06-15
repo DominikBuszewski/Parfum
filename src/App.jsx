@@ -7,6 +7,7 @@ import Footer from "./components/footer/footer.component";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SignInAndSignUpPage from "./pages/SignInAndSignUp/SignInAndSignUp";
 import Shop from "./pages/Shop/Shop";
+import ShoppingCartPage from "./pages/ShoppingCartPage/ShoppingCartPage";
 
 // setCurrentUser(user);
 
@@ -40,6 +41,7 @@ const App = () => {
 				<Route exact path="/" component={Homepage} />
 				<Route path="/signin" component={SignInAndSignUpPage} />
 				<Route path="/shop" component={Shop} />
+				<Route path="/cart" component={ShoppingCartPage} />
 			</Switch>
 			<Footer />
 		</Router>
