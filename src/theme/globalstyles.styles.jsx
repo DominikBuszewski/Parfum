@@ -13,10 +13,13 @@ const GlobalStyle = createGlobalStyle`
         margin: 0px;
 	    padding: 0px;
 	    box-sizing: border-box;
-	    font-family: "Dancing Script", cursive;
+        font-family: "montserrat";
     }
 
 
 `;
 
 export default GlobalStyle;
+
+// font-family: "Dancing Script", cursive;
+//  font-family: 'Sriracha', cursive;

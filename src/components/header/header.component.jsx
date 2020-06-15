@@ -65,10 +65,21 @@ const SearchBar = styled.input`
 	}
 `;
 
+const IconContainer = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-right: 5px;
+`;
+
 const Icon = styled.img`
 	height: 25px;
 	width: 25px;
 	margin-right: 15px;
+
+	&:hover {
+		cursor: pointer;
+	}
 `;
 
 const StyledLink = styled(Link)`
@@ -103,13 +114,10 @@ const Header = ({ currentUser }) => {
 					) : (
 						<StyledLink to="/signin">Sign In</StyledLink>
 					)}
-
-					<Icon
-						src={CartIcon}
-						alt="shopping cart button"
-						onClick={() => setToggleCart(!toggleCart)}
-					/>
-
+					<IconContainer onClick={() => setToggleCart(!toggleCart)}>
+						<Icon src={CartIcon} alt="shopping cart button" />
+						<p>(4)</p>
+					</IconContainer>
 					<Hamburger open={open} setOpen={setOpen} />
 				</NavIcons>
 			</Navigation>

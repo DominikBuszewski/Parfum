@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { colors, device } from "../../theme/main-styles.styles";
 import { Link } from "react-router-dom";
@@ -12,11 +12,12 @@ const StyledDropdown = styled.div`
 	top: 8%;
 	right: 10%;
 	border: 1px solid black;
-	display: ${({ show }) => (show ? "flex" : "none")};
+	display: ${({ toggleCart }) => (toggleCart ? "flex" : "none")};
 	transition: 0.3s ease-in;
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
+	z-index: 10;
 `;
 
 const StyledShopItemsContainer = styled.div`
@@ -34,13 +35,17 @@ const StyledLink = styled(Link)`
 	align-items: center;
 `;
 
-const ShoppingCartDropdown = ({ toggleCart }) => (
-	<StyledDropdown show={toggleCart}>
-		<StyledShopItemsContainer>asd</StyledShopItemsContainer>
-		<StyledLink to="/cart">
-			<Button name={"TO CHECKOUT"} />
-		</StyledLink>
-	</StyledDropdown>
-);
+const ShoppingCartDropdown = ({ toggleCart }) => {
+	const [toggleCart2, setToggleCart2] = useState(false);
+
+	return (
+		<StyledDropdown toggleCart={toggleCart}>
+			<StyledShopItemsContainer>asd</StyledShopItemsContainer>
+			<StyledLink to="/cart">
+				<Button name={"TO CHECKOUT"} />
+			</StyledLink>
+		</StyledDropdown>
+	);
+};
 
 export default ShoppingCartDropdown;
