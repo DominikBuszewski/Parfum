@@ -92,6 +92,10 @@ const StyledLink = styled(Link)`
 const Header = ({ currentUser }) => {
 	const [open, setOpen] = useState(false);
 	const [toggleCart, setToggleCart] = useState(false);
+
+	const toggleHandler = () => {
+		setToggleCart(!toggleCart);
+	};
 	useEffect(() => {
 		open && (document.body.style.overflow = "hidden");
 		!open && (document.body.style.overflow = "unset");
@@ -114,7 +118,7 @@ const Header = ({ currentUser }) => {
 					) : (
 						<StyledLink to="/signin">Sign In</StyledLink>
 					)}
-					<IconContainer onClick={() => setToggleCart(!toggleCart)}>
+					<IconContainer onClick={toggleHandler}>
 						<Icon src={CartIcon} alt="shopping cart button" />
 						<p>(4)</p>
 					</IconContainer>
@@ -123,7 +127,10 @@ const Header = ({ currentUser }) => {
 			</Navigation>
 			<SearchBar placeholder="Type in item you want to search for" />
 			<Menu open={open} setOpen={setOpen} />
-			<ShoppingCartDropdown toggleCart={toggleCart} />
+			<ShoppingCartDropdown
+				toggleCart={toggleCart}
+				toggleHandler={toggleHandler}
+			/>
 		</StyledHeader>
 	);
 };

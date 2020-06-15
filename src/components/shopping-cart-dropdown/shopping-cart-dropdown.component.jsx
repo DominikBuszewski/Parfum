@@ -35,14 +35,12 @@ const StyledLink = styled(Link)`
 	align-items: center;
 `;
 
-const ShoppingCartDropdown = ({ toggleCart }) => {
-	const [toggleCart2, setToggleCart2] = useState(false);
-
+const ShoppingCartDropdown = ({ toggleCart, toggleHandler }) => {
 	return (
 		<StyledDropdown toggleCart={toggleCart}>
 			<StyledShopItemsContainer>asd</StyledShopItemsContainer>
 			<StyledLink to="/cart">
-				<Button name={"TO CHECKOUT"} />
+				<Button name={"TO CHECKOUT"} onClick={toggleHandler} />
 			</StyledLink>
 		</StyledDropdown>
 	);
