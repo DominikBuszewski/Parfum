@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { signInWithGoogle } from "../../firebase/firebase";
+import { auth, signInWithGoogle } from "../../firebase/firebase";
 import Button from "../custom-button/custom-button.component";
 
 const StyledSignIn = styled.div`
@@ -43,25 +43,28 @@ const StyledLabel = styled.label`
 `;
 
 const SignIn = () => {
-	const [userCredentials, setUserCretentials] = useState({
-		email: "",
-		passwrod: "",
-	});
-	const { email, password } = userCredentials;
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	// const [userCredentials, setUserCretentials] = useState({
+	// 	email: "",
+	// 	passwrod: "",
+	// });
+	// const { email, password } = userCredentials;
 	const handleSubmit = async (event) => {
 		event.preventDefault();
-		console.log(email, password);
-		setUserCretentials({ email: "", password: "" });
-	};
-	const handleChange = (event) => {
-		const { value, name } = event.target;
-		setUserCretentials({ ...userCredentials, [name]: value });
-	};
 
-	// const handlePasswordChange = (event) => {
-	// 	const { value } = event.target;
-	// 	setPassword(value);
-	// 	console.log(value);
+		try {
+			await auth.signInWithEmailAndPassword(email, password);
+			setEmail("");
+			setPassword("");
+		} catch (error) {
+			console.log(error);
+		}
+		// setUserCretentials({ email: "", password: "" });
+	};
+	// const handleChange = (event) => {
+	// 	const { value, name } = event.target.value;
+	// 	setUserCretentials({ ...userCredentials, [name]: value });
 	// };
 	return (
 		<StyledSignIn>
@@ -72,7 +75,7 @@ const SignIn = () => {
 				<StyledInput
 					name="email"
 					type="email"
-					onChange={handleChange}
+					onChange={(e) => setEmail(e.target.value)}
 					value={email}
 					label="email"
 					required
@@ -82,10 +85,9 @@ const SignIn = () => {
 					name="password"
 					type="password"
 					value={password}
-					onChange={handleChange}
-					// onChange={(event) => setPassword(event.target)}
+					onChange={(e) => setPassword(e.target.value)}
 					label="password"
-					autocomplete="on"
+					autoComplete="false"
 					required
 				/>
 				<ButtonContainer>
