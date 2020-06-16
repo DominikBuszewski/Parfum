@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { colors, device } from "../../theme/main-styles.styles";
 import { Link } from "react-router-dom";
 import Button from "../custom-button/custom-button.component";
+import ShoppingCartDropdownItem from "../shopping-cart-dropdown-item/shopping-cart-dropdown-item.component";
 
 const StyledDropdown = styled.div`
 	height: 400px;
@@ -18,12 +19,17 @@ const StyledDropdown = styled.div`
 	justify-content: space-around;
 	align-items: center;
 	z-index: 10;
+
+	p {
+		align-self: flex-start;
+		margin: 5px 0px 0px 15px;
+	}
 `;
 
 const StyledShopItemsContainer = styled.div`
 	width: 94%;
 	height: 80%;
-	border: 1px solid red;
+	border-top: 2px solid ${colors.secondary};
 `;
 const StyledLink = styled(Link)`
 	text-decoration: none;
@@ -38,7 +44,14 @@ const StyledLink = styled(Link)`
 const ShoppingCartDropdown = ({ toggleCart, toggleHandler }) => {
 	return (
 		<StyledDropdown toggleCart={toggleCart}>
-			<StyledShopItemsContainer>asd</StyledShopItemsContainer>
+			<p>Cart</p>
+			<StyledShopItemsContainer>
+				<ShoppingCartDropdownItem
+					name={"Aqua Di Gio"}
+					quantity={"10"}
+					summary={"39.99"}
+				/>
+			</StyledShopItemsContainer>
 			<StyledLink to="/cart">
 				<Button name={"TO CHECKOUT"} onClick={toggleHandler} />
 			</StyledLink>
