@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import { colors, device } from "../../theme/main-styles.styles";
+import { colors } from "../../theme/main-styles.styles";
 import { Link } from "react-router-dom";
 import Button from "../custom-button/custom-button.component";
 import ShoppingCartDropdownItem from "../shopping-cart-dropdown-item/shopping-cart-dropdown-item.component";

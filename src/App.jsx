@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SignInAndSignUpPage from "./pages/SignInAndSignUp/SignInAndSignUp";
 import Shop from "./pages/Shop/Shop";
 import ShoppingCartPage from "./pages/ShoppingCartPage/ShoppingCartPage";
+import { firestore } from "./firebase/firebase";
 
 // setCurrentUser(user);
 
@@ -31,8 +32,6 @@ const App = () => {
 			unsuscribeFromAuth();
 		};
 	}, []);
-
-	console.log(currentUser);
 
 	return (
 		<Router>

@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { colors, device } from "../../theme/main-styles.styles";
 import FooterOption from "../footer-option/footer-option";
 import ShopItem from "../shop-item/shop-item.component";
 import aqua from "../../assets/images/aquadigioparfum.png";
+import { firestore } from "../../firebase/firebase";
 
 const StyledDirectoryContainer = styled.main`
 	background-color: ${colors.light};
@@ -79,6 +80,16 @@ const StyledDirectory = styled.section`
 `;
 
 const ShopDirectory = () => {
+	const [items, setItems] = useState([]);
+
+	useEffect(() => {
+		const fetchData = async () => {
+			const data = await firestore.collection("items").get();
+			setItems(data.docs.map((doc) => doc.data()));
+		};
+		fetchData();
+	}, []);
+
 	return (
 		<StyledDirectoryContainer>
 			<StyledDirectoryMenu>
@@ -103,66 +114,15 @@ const ShopDirectory = () => {
 				</StyledDirectoryHeader>
 
 				<StyledDirectory>
-					<ShopItem
-						name={"Aqua di Gio"}
-						brand={"Armani"}
-						imageUrl={aqua}
-						price={"34.99"}
-					/>
-					<ShopItem
-						name={"Aqua di Gio"}
-						brand={"Armani"}
-						imageUrl={aqua}
-						price={"34.99"}
-					/>
-					<ShopItem
-						name={"Aqua di Gio"}
-						brand={"Armani"}
-						imageUrl={aqua}
-						price={"34.99"}
-					/>
-					<ShopItem
-						name={"Aqua di Gio"}
-						brand={"Armani"}
-						imageUrl={aqua}
-						price={"34.99"}
-					/>
-					<ShopItem
-						name={"Aqua di Gio"}
-						brand={"Armani"}
-						imageUrl={aqua}
-						price={"34.99"}
-					/>
-					<ShopItem
-						name={"Aqua di Gio"}
-						brand={"Armani"}
-						imageUrl={aqua}
-						price={"34.99"}
-					/>
-					<ShopItem
-						name={"Aqua di Gio"}
-						brand={"Armani"}
-						imageUrl={aqua}
-						price={"34.99"}
-					/>
-					<ShopItem
-						name={"Aqua di Gio"}
-						brand={"Armani"}
-						imageUrl={aqua}
-						price={"34.99"}
-					/>
-					<ShopItem
-						name={"Aqua di Gio"}
-						brand={"Armani"}
-						imageUrl={aqua}
-						price={"34.99"}
-					/>
-					<ShopItem
-						name={"Aqua di Gio"}
-						brand={"Armani"}
-						imageUrl={aqua}
-						price={"34.99"}
-					/>
+					{items.map(({ id, name, brand, imageUrl, price }) => (
+						<ShopItem
+							key={id}
+							name={name}
+							brand={brand}
+							imageUrl={imageUrl}
+							price={price}
+						/>
+					))}
 				</StyledDirectory>
 			</StyledContainer>
 		</StyledDirectoryContainer>
@@ -170,3 +130,20 @@ const ShopDirectory = () => {
 };
 
 export default ShopDirectory;
+
+// <ShopItem
+// name={"Aqua di Gio"}
+// brand={"Armani"}
+// imageUrl={aqua}
+// price={"34.99"}
+// />
+
+// {items.map((item) => (
+// 	<ShopItem
+// 		key={item.id}
+// 		name={item.name}
+// 		brand={item.brand}
+// 		imageUrl={item.imageUrl}
+// 		price={item.price}
+// 	/>
+// ))}

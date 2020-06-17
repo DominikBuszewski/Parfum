@@ -16,8 +16,12 @@ const StyledShopItem = styled.div`
 
 	h2 {
 		text-align: center;
-		font-size: 1em;
+		font-size: 0.8em;
 		font-weight: bold;
+
+		@media ${device.desktop} {
+			font-size: 1em;
+		}
 	}
 
 	img {
@@ -25,8 +29,13 @@ const StyledShopItem = styled.div`
 		width: 150px;
 	}
 
-	p {
+	span {
 		font-family: "montserrat";
+		font-size: 0.8em;
+
+		@media ${device.desktop} {
+			font-size: 1em;
+		}
 	}
 
 	:hover {
@@ -40,7 +49,7 @@ const ShopItem = ({ name, brand, imageUrl, price }) => (
 		<h2>{name}</h2>
 		<img src={imageUrl} alt="" />
 		<h2>{brand}</h2>
-		<p>{price}$ for 50ml Bottle</p>
+		<span>{price}$ for 50ml Bottle</span>
 	</StyledShopItem>
 );
 
