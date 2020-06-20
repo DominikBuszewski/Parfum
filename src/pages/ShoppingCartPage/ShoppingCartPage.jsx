@@ -5,7 +5,7 @@ import ShoppingCart from "../../components/shopping-cart/shopping-cart.component
 const StyledShoppingPage = styled.div`
 	width: 100%;
 	min-height: 50vh;
-	padding: 15px;
+	/* padding: 15px; */
 	display: flex;
 	justify-content: center;
 `;

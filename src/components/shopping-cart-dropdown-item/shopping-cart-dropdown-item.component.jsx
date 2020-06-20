@@ -9,6 +9,7 @@ const StyledShoppingCartDropdownItem = styled.div`
 	justify-content: space-around;
 	align-items: center;
 	border-bottom: 1px solid ${colors.secondary};
+
 	img {
 		width: 30%;
 	}
@@ -16,7 +17,7 @@ const StyledShoppingCartDropdownItem = styled.div`
 
 const ShoppingCartDropdownItem = ({ quantity, name, summary }) => (
 	<StyledShoppingCartDropdownItem>
-		<img src={aqua} />
+		<img src={aqua} alt="" />
 		<div>{name}</div>
 		<span>{quantity}</span>
 		<span>{summary}$</span>

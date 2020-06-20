@@ -82,7 +82,6 @@ const StyledDirectory = styled.section`
 
 const ShopDirectory = () => {
 	const [items, setItems] = useState([]);
-	const [sort, setSort] = useState("");
 	useEffect(() => {
 		const fetchData = async () => {
 			const data = await firestore.collection("items").orderBy("id").get();
@@ -108,12 +107,8 @@ const ShopDirectory = () => {
 
 					<p>Sorty by:</p>
 					<select name="sort-by">
-						<option value="id" onClick={() => setSort("id")}>
-							Standard
-						</option>
-						<option value="name" onClick={() => setSort("name")}>
-							Alfabetycznie
-						</option>
+						<option value="id">Standard</option>
+						<option value="name">Alfabetycznie</option>
 					</select>
 				</StyledDirectoryHeader>
 

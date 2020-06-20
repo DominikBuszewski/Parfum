@@ -81,7 +81,7 @@ const StyledSummary = styled.div`
 const ShoppingCartItem = () => (
 	<StyledShoppingCartItem>
 		<StyledProduct>
-			<img src={aqua} />
+			<img src={aqua} alt="" />
 			<div>
 				<p>Name</p>
 				<p>Producer</p>

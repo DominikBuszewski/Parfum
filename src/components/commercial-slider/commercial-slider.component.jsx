@@ -6,17 +6,17 @@ import styled from "styled-components";
 import { device } from "../../theme/main-styles.styles";
 
 const SliderContainer = styled.div`
-	width: 100vw;
+	width: 100%;
+	padding: 1em;
 
 	@media ${device.desktop} {
-		width: 40vw;
+		width: 40%;
 	}
 `;
 const BlueDeChanelImage = styled.img`
 	width: 100%;
 	margin-top: 2vh;
-	padding-left: 35px;
-	padding-right: 35px;
+	padding: 1em;
 
 	@media ${device.desktop} {
 		width: 100%;

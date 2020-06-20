@@ -2,61 +2,155 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { firestore } from "../../firebase/firebase";
 import Button from "../custom-button/custom-button.component";
-import { device, color } from "../../theme/main-styles.styles";
+import { device, colors } from "../../theme/main-styles.styles";
+import { Link } from "react-router-dom";
 
 const StyledShopItemDetails = styled.div`
 	width: 98%;
-	background-color: red;
 	margin-top: 2rem;
 	margin: 5rem auto;
-
+	border: 2px solid ${colors.secondary};
+	padding: 5px;
 	@media ${device.desktop} {
 		width: 70%;
 	}
 
 	div {
 		width: 100%;
-		height: 5vh;
-		background-color: blue;
+		height: 10%;
 		display: flex;
 		justify-content: space-between;
 	}
 
 	main {
-		height: 25vh;
-		background-color: purple;
+		min-height: 40%;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
+		border-top: 1px solid ${colors.secondary};
+		width: 100%;
+	}
 
-		* {
-			margin-left: 2rem;
-		}
+	@media ${device.desktop} {
+		width: 70%;
+	}
+	span {
+		margin: 1rem auto;
+		width: 90%;
+		text-align: justify;
+	}
+
+	h3 {
+		margin: 0.5rem 1rem;
 	}
 `;
 
 const StyledShopItemDetailsContainer = styled.section`
 	display: flex;
-	align-items: center;
 	justify-content: center;
-	height: 38vh;
+	align-items: center;
+	height: 30vh;
+	padding: 0.3em;
 
-	p {
+	@media ${device.desktop} {
+		height: 40vh;
+	}
+
+	div {
 		width: 50%;
 		text-align: center;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		justify-content: space-around;
+
+		@media ${device.desktop} {
+			justify-content: center;
+		}
+
+		p {
+			font-size: 1em;
+			width: 90%;
+
+			@media ${device.desktop} {
+				height: 3rem;
+				width: 50%;
+				font-size: 1.5em;
+			}
+		}
+
+		h2 {
+			font-size: 1em;
+			/* text-align: start; */
+			width: 90%;
+
+			@media ${device.desktop} {
+				width: 50%;
+				height: 3rem;
+				font-size: 1.5em;
+			}
+		}
+
+		img {
+			width: 100%;
+			height: 100%;
+
+			@media ${device.desktop} {
+				width: 80%;
+				height: 80%;
+			}
+		}
+
+		button {
+		}
 	}
 `;
 
-const ShopItemDetails = () => {
+const StyledLink = styled(Link)`
+	text-decoration: none;
+`;
+
+const ShopItemDetails = ({ match }) => {
+	const [item, setItem] = useState({});
+
+	// let number = match.params.id;
+
+	useEffect(() => {
+		let number = match.params.id;
+
+		const fetchData = async () => {
+			const data = await firestore.collection("items").get();
+			const mapData = data.docs.map((doc) => doc.data());
+			setItem(mapData.find((callback, index) => index == number));
+		};
+		fetchData();
+
+		// return () => setCurrentItem();
+	}, [match]);
+
 	return (
 		<StyledShopItemDetails>
 			<div>
-				<Button name="Back" />
-				<Button name="To checkout" />
+				<StyledLink to="/shop">
+					<Button name="Back" />
+				</StyledLink>
+				<StyledLink to="/cart">
+					<Button name="To checkout" />
+				</StyledLink>
 			</div>
 			<StyledShopItemDetailsContainer>
-				<p>asdasdasd</p>
-				<p>asdasd</p>
+				<div>
+					<img src={item.imageUrl} alt="" />
+				</div>
+				<div>
+					<h2>Brand: {item.brand}</h2>
+					<h2>Name: {item.name}</h2>
+					<p>Notes: {item.notes}</p>
+					<p>Price: {item.price}$</p>
+					<Button name="add to cart" inverted />
+				</div>
 			</StyledShopItemDetailsContainer>
 			<main>
 				<h3>Description:</h3>

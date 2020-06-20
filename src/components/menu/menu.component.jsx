@@ -32,6 +32,7 @@ const Categories = styled.nav`
 		position: relative;
 		border-bottom: 1px black solid;
 		z-index:0;
+		
 	}
 `;
 
@@ -56,11 +57,11 @@ const MenuElement = styled(Link)`
 const Menu = ({ open, setOpen }) => (
 	<Categories open={open} onClick={() => setOpen(!open)}>
 		<MenuElement to="/shop">Shop</MenuElement>
-		<MenuElement to="/shop">Top 10</MenuElement>
-		<MenuElement to="/shop">Women</MenuElement>
-		<MenuElement to="/shop">Man</MenuElement>
-		<MenuElement to="/shop">New</MenuElement>
-		<MenuElement to="/shop">Promotions</MenuElement>
+		<MenuElement to="">Top 10</MenuElement>
+		<MenuElement to="">Women</MenuElement>
+		<MenuElement to="">Man</MenuElement>
+		<MenuElement to="">New</MenuElement>
+		<MenuElement to="">Promotions</MenuElement>
 	</Categories>
 );
 
