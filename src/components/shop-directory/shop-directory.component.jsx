@@ -3,8 +3,9 @@ import styled from "styled-components";
 import { colors, device } from "../../theme/main-styles.styles";
 import FooterOption from "../footer-option/footer-option";
 import ShopItem from "../shop-item/shop-item.component";
-import aqua from "../../assets/images/aquadigioparfum.png";
+
 import { firestore } from "../../firebase/firebase";
+import { Link } from "react-router-dom";
 
 const StyledDirectoryContainer = styled.main`
 	background-color: ${colors.light};
@@ -81,10 +82,10 @@ const StyledDirectory = styled.section`
 
 const ShopDirectory = () => {
 	const [items, setItems] = useState([]);
-
+	const [sort, setSort] = useState("");
 	useEffect(() => {
 		const fetchData = async () => {
-			const data = await firestore.collection("items").get();
+			const data = await firestore.collection("items").orderBy("id").get();
 			setItems(data.docs.map((doc) => doc.data()));
 		};
 		fetchData();
@@ -107,21 +108,26 @@ const ShopDirectory = () => {
 
 					<p>Sorty by:</p>
 					<select name="sort-by">
-						<option value="Popularity">Popularity</option>
-						<option value="Price high">Price from highest</option>
-						<option value="Price low">Price from lowest</option>
+						<option value="id" onClick={() => setSort("id")}>
+							Standard
+						</option>
+						<option value="name" onClick={() => setSort("name")}>
+							Alfabetycznie
+						</option>
 					</select>
 				</StyledDirectoryHeader>
 
 				<StyledDirectory>
 					{items.map(({ id, name, brand, imageUrl, price }) => (
-						<ShopItem
-							key={id}
-							name={name}
-							brand={brand}
-							imageUrl={imageUrl}
-							price={price}
-						/>
+						<Link to={`/shop/${id}`} key={id}>
+							<ShopItem
+								key={id}
+								name={name}
+								brand={brand}
+								imageUrl={imageUrl}
+								price={price}
+							/>
+						</Link>
 					))}
 				</StyledDirectory>
 			</StyledContainer>

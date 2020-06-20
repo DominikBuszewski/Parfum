@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SignInAndSignUpPage from "./pages/SignInAndSignUp/SignInAndSignUp";
 import Shop from "./pages/Shop/Shop";
 import ShoppingCartPage from "./pages/ShoppingCartPage/ShoppingCartPage";
-import { firestore } from "./firebase/firebase";
+import ShopItemDetails from "./components/shop-items-details/shop-item-details.component";
 
 // setCurrentUser(user);
 
@@ -39,8 +39,9 @@ const App = () => {
 			<Switch>
 				<Route exact path="/" component={Homepage} />
 				<Route path="/signin" component={SignInAndSignUpPage} />
-				<Route path="/shop" component={Shop} />
+				<Route path="/shop" exact component={Shop} />
 				<Route path="/cart" component={ShoppingCartPage} />
+				<Route path="/shop/:id" component={ShopItemDetails} />
 			</Switch>
 			<Footer />
 		</Router>
@@ -48,3 +49,9 @@ const App = () => {
 };
 
 export default App;
+
+// {items
+// 	.filter((item, idx) => idx < 4)
+// 	.map(item => (
+// 	  <CollectionItem key={item.id} item={item} />
+// 	))}
