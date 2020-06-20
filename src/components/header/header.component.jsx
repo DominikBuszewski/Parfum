@@ -26,7 +26,7 @@ const Navigation = styled.nav`
 
 const NavIcons = styled.div`
 	display: flex;
-	justify-content: flex-end;
+	justify-content: center;
 	align-items: center;
 	width: 60%;
 
@@ -96,13 +96,13 @@ const Header = ({ currentUser }) => {
 	const toggleHandler = () => {
 		setToggleCart(!toggleCart);
 	};
-	useEffect(() => {
-		open && (document.body.style.overflowY = "hidden");
-		!open && (document.body.style.overflowY = "unset");
-	}, [open]);
-	useEffect(() => {
-		return () => setOpen(false);
-	}, []);
+	// useEffect(() => {
+	// 	open && (document.body.style.overflowY = "hidden");
+	// 	!open && (document.body.style.overflowY = "unset");
+	// }, [open]);
+	// useEffect(() => {
+	// 	return () => setOpen(false);
+	// }, []);
 	return (
 		<StyledHeader>
 			<Navigation>

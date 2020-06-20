@@ -11,6 +11,9 @@ const StyledBurger = styled.button`
 	background: transparent;
 	border: none;
 	cursor: pointer;
+	position: fixed;
+	right: 1em;
+	top: 2em;
 	z-index: 1000;
 
 	@media ${device.desktop} {
