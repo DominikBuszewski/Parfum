@@ -11,7 +11,7 @@ const StyledBurger = styled.button`
 	background: transparent;
 	border: none;
 	cursor: pointer;
-	position: fixed;
+	position: absolute;
 	right: 1em;
 	top: 2em;
 	z-index: 1000;

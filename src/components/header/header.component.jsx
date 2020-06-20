@@ -96,13 +96,10 @@ const Header = ({ currentUser }) => {
 	const toggleHandler = () => {
 		setToggleCart(!toggleCart);
 	};
-	// useEffect(() => {
-	// 	open && (document.body.style.overflowY = "hidden");
-	// 	!open && (document.body.style.overflowY = "unset");
-	// }, [open]);
-	// useEffect(() => {
-	// 	return () => setOpen(false);
-	// }, []);
+	useEffect(() => {
+		open && (document.body.style.overflowY = "hidden");
+		!open && (document.body.style.overflowY = "unset");
+	}, [open]);
 	return (
 		<StyledHeader>
 			<Navigation>
