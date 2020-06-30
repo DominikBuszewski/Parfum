@@ -10,7 +10,6 @@ const NewsletterContainer = styled.div`
 	width: 100%;
 
 	@media ${device.desktop} {
-		width: 100%;
 		border: 1px solid black;
 		height: 30vh;
 	}
@@ -20,22 +19,23 @@ const Headline = styled.h3`
 	font-size: 1.6em;
 	text-align: center;
 	margin-top: 25px;
+	height: 10vh;
 
 	@media ${device.desktop} {
 		text-align: left;
 		margin-left: 5px;
-		height: 10vh;
 	}
 `;
 
 const StyledNewsletter = styled.form`
+	height: 70%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	padding: 15px;
+	padding: 1em;
 	background-color: ${colors.secondary};
-	margin: 5px;
+	margin: 0.5em;
 
 	p {
 		font-family: "montserrat";
@@ -48,10 +48,14 @@ const StyledNewsletter = styled.form`
 
 const StyledNewsletterInput = styled.input`
 	width: 100%;
-	height: 50px;
+
 	margin: 5px 0px 5px 0px;
 	font-size: 1.2em;
 	font-family: "montserrat";
+
+	@media ${device.desktop} {
+		height: 40%;
+	}
 `;
 
 const Newsletter = () => {

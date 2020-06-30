@@ -3,13 +3,11 @@ import styled from "styled-components";
 import { device } from "../../theme/main-styles.styles";
 
 const StyledShopItem = styled.div`
-	/* height: 400px;
-	width: 250px; */
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	padding: 15px;
+	padding: 1em;
 
 	@media ${device.desktop} {
 	}
@@ -25,8 +23,7 @@ const StyledShopItem = styled.div`
 	}
 
 	img {
-		height: 200px;
-		width: 150px;
+		height: 25vh;
 	}
 
 	span {

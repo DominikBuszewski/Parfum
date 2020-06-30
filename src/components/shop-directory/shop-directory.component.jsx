@@ -70,13 +70,13 @@ const StyledDirectoryHeader = styled.header`
 `;
 
 const StyledDirectory = styled.section`
-	padding: 15px;
-
+	padding: 1em;
 	display: grid;
+	grid-auto-flow: row;
 	grid-template-columns: repeat(2, 50%);
 
 	@media ${device.desktop} {
-		grid-template-columns: repeat(4, 25%);
+		grid-template-columns: repeat(4, 1fr);
 	}
 `;
 

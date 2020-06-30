@@ -16,23 +16,20 @@ const Categories = styled.nav`
 	background-color: ${colors.light};
 	z-index: 800;
 	scroll-behavior: smooth;
-	transform: ${({ open }) => (open ? "translateY(0)" : "translateY(-100%)")};
-	/* opacity: ${({ open }) => (open ? "1" : "0")}; */
-	/* transition: 1s ease-in; */
+	transform: ${({ open }) => (open ? "translateY(0%)" : "translateY(-100%)")};
 
 	@media ${device.desktop} {
 		height: 5vh;
 		width: 100%;
+		transform: translateY(0%);
+		transition: none;
 		display: flex;
 		flex-direction: row;
 		align-items: center;
 		justify-content: center;
-		transition: 0s;
-		transform: translateX(0px);
 		position: relative;
 		border-bottom: 1px black solid;
-		z-index:0;
-		
+		z-index: 0;
 	}
 `;
 
@@ -55,8 +52,9 @@ const MenuElement = styled(Link)`
 `;
 
 const Menu = ({ open, setOpen }) => (
-	<Categories open={open} onClick={() => setOpen(!open)}>
+	<Categories open={open} onClick={() => setOpen(false)}>
 		<MenuElement to="/shop">Shop</MenuElement>
+		<MenuElement to="">Directory</MenuElement>
 		<MenuElement to="">Top 10</MenuElement>
 		<MenuElement to="">Women</MenuElement>
 		<MenuElement to="">Man</MenuElement>

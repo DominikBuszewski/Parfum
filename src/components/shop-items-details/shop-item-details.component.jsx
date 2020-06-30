@@ -118,16 +118,12 @@ const ShopItemDetails = ({ match }) => {
 	// let number = match.params.id;
 
 	useEffect(() => {
-		let number = match.params.id;
-
 		const fetchData = async () => {
 			const data = await firestore.collection("items").get();
 			const mapData = data.docs.map((doc) => doc.data());
-			setItem(mapData.find((callback, index) => index == number));
+			setItem(mapData.find((callback, index) => index == match.params.id));
 		};
 		fetchData();
-
-		// return () => setCurrentItem();
 	}, [match]);
 
 	return (
