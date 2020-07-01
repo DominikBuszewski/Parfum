@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext, useState, useEffect } from "react";
 import styled from "styled-components";
 import { colors, device } from "../../theme/main-styles.styles";
 import ShoppingCartItem from "../shopping-cart-item/shopping-cart-item.component";
+import { CartContext } from "./cart-context";
 
 const StyledShoppingCart = styled.section`
 	min-height: 40vh;
@@ -83,20 +84,39 @@ const CartHeaderElement = styled.li`
 	}
 `;
 
-const ShoppingCart = () => (
-	<StyledShoppingCart>
-		<H2>Your Shopping Cart</H2>
-		<ShoppingCartHeader>
-			<CartHeaderElement>Product</CartHeaderElement>
-			<CartHeaderElement>Remove</CartHeaderElement>
-			<CartHeaderElement>Amount</CartHeaderElement>
-			<CartHeaderElement>Summary</CartHeaderElement>
-		</ShoppingCartHeader>
-		<ShoppingCartItems>
-			<ShoppingCartItem />
-			<ShoppingCartItem />
-		</ShoppingCartItems>
-	</StyledShoppingCart>
-);
+const ShoppingCart = () => {
+	const [cart, setCart] = useContext(CartContext);
 
+	const totalPrice = cart.reduce((acc, curr) => acc + curr.price, 0);
+	const fixedPrice = (totalPrice * 1).toFixed(2);
+
+	return (
+		<StyledShoppingCart>
+			<H2>Items in cart: {cart.length}</H2>
+			<H2>
+				Total price:
+				{cart.length > 0 ? fixedPrice : "0"}$
+			</H2>
+			{console.log(cart.length)}
+			<ShoppingCartHeader>
+				<CartHeaderElement>Product</CartHeaderElement>
+				<CartHeaderElement>Remove</CartHeaderElement>
+				<CartHeaderElement>Amount</CartHeaderElement>
+				<CartHeaderElement>Summary</CartHeaderElement>
+			</ShoppingCartHeader>
+			<ShoppingCartItems>
+				{cart.map((cartItem) => (
+					<ShoppingCartItem
+						key={cartItem.id}
+						name={cartItem.name}
+						brand={cartItem.brand}
+						qyantity={cartItem.quantity}
+						price={cartItem.price}
+						imageUrl={cartItem.imageUrl}
+					/>
+				))}
+			</ShoppingCartItems>
+		</StyledShoppingCart>
+	);
+};
 export default ShoppingCart;

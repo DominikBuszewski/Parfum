@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import { firestore } from "../../firebase/firebase";
 import Button from "../custom-button/custom-button.component";
 import { device, colors } from "../../theme/main-styles.styles";
 import { Link } from "react-router-dom";
+import { CartContext } from "../shopping-cart/cart-context";
 
 const StyledShopItemDetails = styled.div`
 	width: 98%;
@@ -112,19 +113,32 @@ const StyledLink = styled(Link)`
 	text-decoration: none;
 `;
 
-const ShopItemDetails = ({ match }) => {
+const ShopItemDetails = (props) => {
 	const [item, setItem] = useState({});
-
-	// let number = match.params.id;
+	const [cart, setCart] = useContext(CartContext);
 
 	useEffect(() => {
 		const fetchData = async () => {
 			const data = await firestore.collection("items").get();
 			const mapData = data.docs.map((doc) => doc.data());
-			setItem(mapData.find((callback, index) => index == match.params.id));
+			setItem(
+				mapData.find((callback, index) => index == props.match.params.id)
+			);
 		};
 		fetchData();
-	}, [match]);
+	}, [props.match]);
+
+	const addToCart = (cartItems) => {
+		const cartItemToAdd = {
+			name: item.name,
+			brand: item.brand,
+			price: item.price,
+			imageUrl: item.imageUrl,
+			quantity: 1,
+			id: item.id,
+		};
+		setCart((currentCart) => [...currentCart, cartItemToAdd]);
+	};
 
 	return (
 		<StyledShopItemDetails>
@@ -145,7 +159,7 @@ const ShopItemDetails = ({ match }) => {
 					<h2>Name: {item.name}</h2>
 					<p>Notes: {item.notes}</p>
 					<p>Price: {item.price}$</p>
-					<Button name="add to cart" inverted />
+					<Button name="add to cart" inverted onClick={addToCart} />
 				</div>
 			</StyledShopItemDetailsContainer>
 			<main>

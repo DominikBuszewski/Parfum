@@ -78,20 +78,20 @@ const StyledSummary = styled.div`
 	}
 `;
 
-const ShoppingCartItem = () => (
+const ShoppingCartItem = ({ name, brand, price, imageUrl, quantity }) => (
 	<StyledShoppingCartItem>
 		<StyledProduct>
-			<img src={aqua} alt="" />
+			<img src={imageUrl} alt="" />
 			<div>
-				<p>Name</p>
-				<p>Producer</p>
+				<p>{name}</p>
+				<p>{brand}</p>
 				<p>50ml</p>
 			</div>
 		</StyledProduct>
 		<StyledOptions>
-			<StyledRemove>X Remove</StyledRemove>
-			<StyledAmount>- 1 +</StyledAmount>
-			<StyledSummary>34$</StyledSummary>
+			<StyledRemove>X</StyledRemove>
+			<StyledAmount>- {quantity} +</StyledAmount>
+			<StyledSummary>{price}$</StyledSummary>
 		</StyledOptions>
 	</StyledShoppingCartItem>
 );

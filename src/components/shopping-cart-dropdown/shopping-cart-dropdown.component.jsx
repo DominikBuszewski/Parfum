@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { colors } from "../../theme/main-styles.styles";
 import { Link } from "react-router-dom";
 import Button from "../custom-button/custom-button.component";
 import ShoppingCartDropdownItem from "../shopping-cart-dropdown-item/shopping-cart-dropdown-item.component";
+import { CartContext } from "../shopping-cart/cart-context";
 
 const StyledDropdown = styled.div`
 	height: 400px;
@@ -42,15 +43,24 @@ const StyledLink = styled(Link)`
 `;
 
 const ShoppingCartDropdown = ({ toggleCart, toggleHandler }) => {
+	const [cart, setCart] = useContext(CartContext);
+
+	const totalDropdownPrice = cart.reduce((acc, curr) => acc + curr.price, 0);
+	const fixedDropdownPrice = (totalDropdownPrice * 1).toFixed(2);
+	// const totalItemPrice = cart.reduce((acc, curr) => acc + curr.price * curr.quantity, 0);
+	// const fixedTotalItemPrice = (totalItemPrice * 1).toFixed(2);
 	return (
 		<StyledDropdown toggleCart={toggleCart}>
-			<p>Cart</p>
+			<p>Total price: {fixedDropdownPrice}$</p>
 			<StyledShopItemsContainer>
-				<ShoppingCartDropdownItem
-					name={"Aqua Di Gio"}
-					quantity={"10"}
-					summary={"39.99"}
-				/>
+				{cart.map((cartItem) => (
+					<ShoppingCartDropdownItem
+						key={cartItem.id}
+						name={cartItem.name}
+						quantity={cartItem.quantity}
+						imageUrl={cartItem.imageUrl}
+					/>
+				))}
 			</StyledShopItemsContainer>
 			<StyledLink to="/cart">
 				<Button name={"TO CHECKOUT"} onClick={toggleHandler} />

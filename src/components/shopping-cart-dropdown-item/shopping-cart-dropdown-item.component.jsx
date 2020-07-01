@@ -15,12 +15,11 @@ const StyledShoppingCartDropdownItem = styled.div`
 	}
 `;
 
-const ShoppingCartDropdownItem = ({ quantity, name, summary }) => (
+const ShoppingCartDropdownItem = ({ quantity, name, imageUrl }) => (
 	<StyledShoppingCartDropdownItem>
-		<img src={aqua} alt="" />
+		<img src={imageUrl} alt="" />
 		<div>{name}</div>
 		<span>{quantity}</span>
-		<span>{summary}$</span>
 	</StyledShoppingCartDropdownItem>
 );
 

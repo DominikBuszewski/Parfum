@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import CartIcon from "../../assets/icons/shopping-cart-icon.svg";
 import { Link } from "react-router-dom";
@@ -7,6 +7,7 @@ import Hamburger from "../hamburger-menu-button/hamburger.component";
 import { auth } from "../../firebase/firebase";
 import { colors, device } from "../../theme/main-styles.styles";
 import ShoppingCartDropdown from "../shopping-cart-dropdown/shopping-cart-dropdown.component";
+import { CartContext } from "../shopping-cart/cart-context";
 
 const StyledHeader = styled.header`
 	width: 100%;
@@ -92,7 +93,7 @@ const StyledLink = styled(Link)`
 const Header = ({ currentUser }) => {
 	const [open, setOpen] = useState(false);
 	const [toggleCart, setToggleCart] = useState(false);
-
+	const [cart, setCart] = useContext(CartContext);
 	const toggleHandler = () => {
 		setToggleCart(!toggleCart);
 	};
@@ -121,7 +122,7 @@ const Header = ({ currentUser }) => {
 					)}
 					<IconContainer onClick={toggleHandler}>
 						<Icon src={CartIcon} alt="shopping cart button" />
-						<p>(4)</p>
+						<p>({cart.length})</p>
 					</IconContainer>
 					<Hamburger open={open} setOpen={setOpen} />
 				</NavIcons>

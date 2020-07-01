@@ -9,6 +9,7 @@ import SignInAndSignUpPage from "./pages/SignInAndSignUp/SignInAndSignUp";
 import Shop from "./pages/Shop/Shop";
 import ShoppingCartPage from "./pages/ShoppingCartPage/ShoppingCartPage";
 import ShopItemDetails from "./components/shop-items-details/shop-item-details.component";
+import { CartProvider } from "./components/shopping-cart/cart-context";
 
 // setCurrentUser(user);
 
@@ -28,22 +29,24 @@ const App = () => {
 				setCurrentUser(userAuth);
 			}
 		});
-		return () => {
-			unsuscribeFromAuth();
-		};
+		// return () => {
+		// 	unsuscribeFromAuth();
+		// };
 	}, []);
 
 	return (
 		<Router>
-			<Header currentUser={currentUser} />
-			<Switch>
-				<Route exact path="/" component={Homepage} />
-				<Route path="/signin" component={SignInAndSignUpPage} />
-				<Route path="/shop" exact component={Shop} />
-				<Route path="/shop/:id" component={ShopItemDetails} />
-				<Route path="/cart" component={ShoppingCartPage} />
-			</Switch>
-			<Footer />
+			<CartProvider>
+				<Header currentUser={currentUser} />
+				<Switch>
+					<Route exact path="/" component={Homepage} />
+					<Route path="/signin" component={SignInAndSignUpPage} />
+					<Route path="/shop" exact component={Shop} />
+					<Route path="/shop/:id" component={ShopItemDetails} />
+					<Route path="/cart" component={ShoppingCartPage} />
+				</Switch>
+				<Footer />
+			</CartProvider>
 		</Router>
 	);
 };
