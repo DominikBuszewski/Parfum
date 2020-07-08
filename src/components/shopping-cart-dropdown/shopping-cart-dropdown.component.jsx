@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { colors } from "../../theme/main-styles.styles";
 import { Link } from "react-router-dom";
@@ -31,6 +31,7 @@ const StyledShopItemsContainer = styled.div`
 	width: 94%;
 	height: 80%;
 	border-top: 2px solid ${colors.secondary};
+	overflow-y: scroll;
 `;
 const StyledLink = styled(Link)`
 	text-decoration: none;
@@ -43,22 +44,18 @@ const StyledLink = styled(Link)`
 `;
 
 const ShoppingCartDropdown = ({ toggleCart, toggleHandler }) => {
-	const [cart, setCart] = useContext(CartContext);
+	const cartCtx = useContext(CartContext);
 
-	const totalDropdownPrice = cart.reduce((acc, curr) => acc + curr.price, 0);
-	const fixedDropdownPrice = (totalDropdownPrice * 1).toFixed(2);
-	// const totalItemPrice = cart.reduce((acc, curr) => acc + curr.price * curr.quantity, 0);
-	// const fixedTotalItemPrice = (totalItemPrice * 1).toFixed(2);
 	return (
 		<StyledDropdown toggleCart={toggleCart}>
-			<p>Total price: {fixedDropdownPrice}$</p>
 			<StyledShopItemsContainer>
-				{cart.map((cartItem) => (
+				{cartCtx.cartItems.map((cartItem) => (
 					<ShoppingCartDropdownItem
 						key={cartItem.id}
 						name={cartItem.name}
 						quantity={cartItem.quantity}
 						imageUrl={cartItem.imageUrl}
+						increase={cartCtx.increaseQuantity}
 					/>
 				))}
 			</StyledShopItemsContainer>

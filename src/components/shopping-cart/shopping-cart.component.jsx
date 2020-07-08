@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { colors, device } from "../../theme/main-styles.styles";
 import ShoppingCartItem from "../shopping-cart-item/shopping-cart-item.component";
@@ -7,7 +7,6 @@ import { CartContext } from "./cart-context";
 const StyledShoppingCart = styled.section`
 	min-height: 40vh;
 	width: 98%;
-	background-color: silver;
 	margin: 50px 0 50px 0;
 
 	@media ${device.desktop} {
@@ -85,19 +84,20 @@ const CartHeaderElement = styled.li`
 `;
 
 const ShoppingCart = () => {
-	const [cart, setCart] = useContext(CartContext);
+	const cartCtx = useContext(CartContext);
 
-	const totalPrice = cart.reduce((acc, curr) => acc + curr.price, 0);
+	const totalPrice = cartCtx.cartItems.reduce(
+		(acc, curr) => acc + curr.price,
+		0
+	);
 	const fixedPrice = (totalPrice * 1).toFixed(2);
 
 	return (
 		<StyledShoppingCart>
-			<H2>Items in cart: {cart.length}</H2>
 			<H2>
 				Total price:
-				{cart.length > 0 ? fixedPrice : "0"}$
+				{cartCtx.cartItems.length > 0 ? fixedPrice : "0"}$
 			</H2>
-			{console.log(cart.length)}
 			<ShoppingCartHeader>
 				<CartHeaderElement>Product</CartHeaderElement>
 				<CartHeaderElement>Remove</CartHeaderElement>
@@ -105,7 +105,7 @@ const ShoppingCart = () => {
 				<CartHeaderElement>Summary</CartHeaderElement>
 			</ShoppingCartHeader>
 			<ShoppingCartItems>
-				{cart.map((cartItem) => (
+				{cartCtx.cartItems.map((cartItem) => (
 					<ShoppingCartItem
 						key={cartItem.id}
 						name={cartItem.name}

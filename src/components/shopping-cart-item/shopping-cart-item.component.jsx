@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { device } from "../../theme/main-styles.styles";
-import aqua from "../../assets/images/aquadigioparfum.png";
 
 const StyledShoppingCartItem = styled.div`
 	height: 50vh;
@@ -32,10 +31,9 @@ const StyledProduct = styled.div`
 	}
 
 	img {
-		height: 30vh;
+		width: 50%;
 
 		@media ${device.desktop} {
-			height: 100%;
 		}
 	}
 `;
@@ -78,22 +76,27 @@ const StyledSummary = styled.div`
 	}
 `;
 
-const ShoppingCartItem = ({ name, brand, price, imageUrl, quantity }) => (
-	<StyledShoppingCartItem>
-		<StyledProduct>
-			<img src={imageUrl} alt="" />
-			<div>
-				<p>{name}</p>
-				<p>{brand}</p>
-				<p>50ml</p>
-			</div>
-		</StyledProduct>
-		<StyledOptions>
-			<StyledRemove>X</StyledRemove>
-			<StyledAmount>- {quantity} +</StyledAmount>
-			<StyledSummary>{price}$</StyledSummary>
-		</StyledOptions>
-	</StyledShoppingCartItem>
-);
-
+const ShoppingCartItem = ({ name, brand, price, imageUrl, quantity }) => {
+	return (
+		<StyledShoppingCartItem>
+			<StyledProduct>
+				<img src={imageUrl} alt="" />
+				<div>
+					<p>{name}</p>
+					<p>{brand}</p>
+					<p>50ml</p>
+				</div>
+			</StyledProduct>
+			<StyledOptions>
+				<StyledRemove>X</StyledRemove>
+				<StyledAmount>
+					<button>+</button>
+					{quantity}
+					<button>-</button>
+				</StyledAmount>
+				<StyledSummary>{price}$</StyledSummary>
+			</StyledOptions>
+		</StyledShoppingCartItem>
+	);
+};
 export default ShoppingCartItem;

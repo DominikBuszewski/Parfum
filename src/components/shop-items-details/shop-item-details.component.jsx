@@ -115,7 +115,7 @@ const StyledLink = styled(Link)`
 
 const ShopItemDetails = (props) => {
 	const [item, setItem] = useState({});
-	const [cart, setCart] = useContext(CartContext);
+	const cartCtx = useContext(CartContext);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -128,17 +128,29 @@ const ShopItemDetails = (props) => {
 		fetchData();
 	}, [props.match]);
 
-	const addToCart = (cartItems) => {
-		const cartItemToAdd = {
-			name: item.name,
-			brand: item.brand,
-			price: item.price,
-			imageUrl: item.imageUrl,
-			quantity: 1,
-			id: item.id,
-		};
-		setCart((currentCart) => [...currentCart, cartItemToAdd]);
-	};
+	// const addToCart = (props) => {
+	// 	const cartItemToAdd = {
+	// 		name: item.name,
+	// 		brand: item.brand,
+	// 		price: item.price,
+	// 		imageUrl: item.imageUrl,
+	// 		id: item.id,
+	// 	};
+
+	// 	const existingCartItem = cart.find(
+	// 		(cartItem) => cartItem.id === cartItemToAdd.id
+	// 	);
+	// 	if (existingCartItem) {
+	// 		return cart.map((cartItem) =>
+	// 			cartItem.id === cartItemToAdd.id
+	// 				? cartItem.push({ quantity: cartItemToAdd.quantity + 1 }) &&
+	// 				  console.log(cartItemToAdd)
+	// 				: cartItem
+	// 		);
+	// 	}
+
+	// 	return setCart((currentCart) => [...currentCart, cartItemToAdd]);
+	// };
 
 	return (
 		<StyledShopItemDetails>
@@ -159,7 +171,11 @@ const ShopItemDetails = (props) => {
 					<h2>Name: {item.name}</h2>
 					<p>Notes: {item.notes}</p>
 					<p>Price: {item.price}$</p>
-					<Button name="add to cart" inverted onClick={addToCart} />
+					<Button
+						name="add to cart"
+						inverted
+						onClick={() => cartCtx.addTocart(item)}
+					/>
 				</div>
 			</StyledShopItemDetailsContainer>
 			<main>

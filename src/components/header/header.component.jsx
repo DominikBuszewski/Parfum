@@ -93,7 +93,9 @@ const StyledLink = styled(Link)`
 const Header = ({ currentUser }) => {
 	const [open, setOpen] = useState(false);
 	const [toggleCart, setToggleCart] = useState(false);
-	const [cart, setCart] = useContext(CartContext);
+	const cartCtx = useContext(CartContext);
+	const cartItemsAmount = cartCtx.cartItemsCount;
+
 	const toggleHandler = () => {
 		setToggleCart(!toggleCart);
 	};
@@ -122,7 +124,7 @@ const Header = ({ currentUser }) => {
 					)}
 					<IconContainer onClick={toggleHandler}>
 						<Icon src={CartIcon} alt="shopping cart button" />
-						<p>({cart.length})</p>
+						<p>({cartItemsAmount})</p>
 					</IconContainer>
 					<Hamburger open={open} setOpen={setOpen} />
 				</NavIcons>
