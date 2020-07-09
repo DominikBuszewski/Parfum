@@ -1,21 +1,65 @@
-import React, { useState, useReducer, createContext } from "react";
+import React, { useState, createContext } from "react";
 
 export const CartContext = createContext();
 
 export const CartProvider = (props) => {
 	const [cartItems, setCartItems] = useState([]);
-	const [state, dispatch] = useReducer(reducer, { quantity: 1 });
+	// const [state, dispatch] = useReducer(reducer, { quantity: 1 });
 
 	function addTocart(cartItem) {
 		setCartItems((prevState) => [...prevState, cartItem]);
 	}
 
-	function reducer(state, action) {
-		return { quantity: state.quantity + 1 };
+	function removeFromCart(cartItems, cartItemToRemove) {
+		const existingCartItem = cartItems.find(
+			(cartItem) => cartItem.id === cartItemToRemove.id
+		);
+
+		return setCartItems(
+			cartItems.filter((cartItem) => cartItem.id !== cartItemToRemove.id)
+		);
 	}
 
-	function increaseQuantity() {
-		dispatch();
+	function increase(cartItems, cartItemToAdd) {
+		const existingCartItem = cartItems.find(
+			(cartItem) => cartItem.id === cartItemToAdd.id
+		);
+		return setCartItems(
+			cartItems.map((cartItem) =>
+				cartItem.id === cartItemToAdd.id
+					? {
+							...cartItem,
+							quantity: cartItem.quantity + 1,
+					  }
+					: cartItem
+			)
+		);
+	}
+
+	function decrease(cartItems, cartItemToRemove) {
+		const existingCartItem = cartItems.find(
+			(cartItem) => cartItem.id === cartItemToRemove.id
+		);
+		if (existingCartItem.quantity === 1) {
+			return setCartItems(
+				cartItems.filter((cartItem) => cartItem.id !== cartItemToRemove.id)
+			);
+		} else {
+			return setCartItems(
+				cartItems.map((cartItem) =>
+					cartItem.id === cartItemToRemove.id
+						? {
+								...cartItem,
+								quantity: cartItem.quantity - 1,
+						  }
+						: cartItem
+				)
+			);
+		}
+	}
+
+	function clearCart() {
+		setCartItems([]);
 	}
 
 	function cartItemsWithQUantity(cartItems) {
@@ -32,13 +76,17 @@ export const CartProvider = (props) => {
 			return acc;
 		}, []);
 	}
+
 	return (
 		<CartContext.Provider
 			value={{
 				cartItems: cartItemsWithQUantity(cartItems),
 				addTocart,
-				increaseQuantity,
 				cartItemsCount: cartItems.length,
+				removeFromCart,
+				clearCart,
+				decrease,
+				increase,
 			}}
 		>
 			{props.children}

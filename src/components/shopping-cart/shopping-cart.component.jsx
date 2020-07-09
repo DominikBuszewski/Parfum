@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { colors, device } from "../../theme/main-styles.styles";
 import ShoppingCartItem from "../shopping-cart-item/shopping-cart-item.component";
@@ -87,9 +87,10 @@ const ShoppingCart = () => {
 	const cartCtx = useContext(CartContext);
 
 	const totalPrice = cartCtx.cartItems.reduce(
-		(acc, curr) => acc + curr.price,
+		(acc, currentItem) => acc + currentItem.price * currentItem.quantity,
 		0
 	);
+
 	const fixedPrice = (totalPrice * 1).toFixed(2);
 
 	return (
@@ -97,6 +98,9 @@ const ShoppingCart = () => {
 			<H2>
 				Total price:
 				{cartCtx.cartItems.length > 0 ? fixedPrice : "0"}$
+			</H2>
+			<H2>
+				<button onClick={cartCtx.clearCart}>Clear cart</button>
 			</H2>
 			<ShoppingCartHeader>
 				<CartHeaderElement>Product</CartHeaderElement>
@@ -110,9 +114,10 @@ const ShoppingCart = () => {
 						key={cartItem.id}
 						name={cartItem.name}
 						brand={cartItem.brand}
-						qyantity={cartItem.quantity}
+						quantity={cartItem.quantity}
 						price={cartItem.price}
 						imageUrl={cartItem.imageUrl}
+						cartItem={cartItem}
 					/>
 				))}
 			</ShoppingCartItems>

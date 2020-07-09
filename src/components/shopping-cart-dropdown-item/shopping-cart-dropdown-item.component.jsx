@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import aqua from "../../assets/images/aquadigioparfum.png";
+
 import { colors } from "../../theme/main-styles.styles";
 
 const StyledShoppingCartDropdownItem = styled.div`
@@ -21,22 +21,18 @@ const StyledShoppingCartDropdownItem = styled.div`
 	}
 `;
 
-const ShoppingCartDropdownItem = ({
-	quantity,
-	name,
-	imageUrl,
-	increase,
-	decrease,
-}) => (
-	<StyledShoppingCartDropdownItem>
-		<img src={imageUrl} alt="" />
-		<div>{name}</div>
-		<div>
-			<button onClick={increase}>+</button>
-			<span>{quantity}</span>
-			<button onClick={decrease}>-</button>
-		</div>
-	</StyledShoppingCartDropdownItem>
-);
+const ShoppingCartDropdownItem = ({ remove, quantity, name, imageUrl }) => {
+	return (
+		<StyledShoppingCartDropdownItem>
+			<img src={imageUrl} alt="" />
+			<div>{name}</div>
+			<div>
+				<button>+</button>
+				<span>{quantity}</span>
+				<button onClick={remove}>-</button>
+			</div>
+		</StyledShoppingCartDropdownItem>
+	);
+};
 
 export default ShoppingCartDropdownItem;

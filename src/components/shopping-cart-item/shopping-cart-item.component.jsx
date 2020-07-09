@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { device } from "../../theme/main-styles.styles";
-
+import { CartContext } from "../shopping-cart/cart-context";
 const StyledShoppingCartItem = styled.div`
 	height: 50vh;
 	width: 100%;
@@ -51,7 +51,7 @@ const StyledOptions = styled.div`
 	}
 `;
 
-const StyledRemove = styled.div`
+const StyledRemove = styled.button`
 	width: 33%;
 	text-align: center;
 
@@ -76,7 +76,16 @@ const StyledSummary = styled.div`
 	}
 `;
 
-const ShoppingCartItem = ({ name, brand, price, imageUrl, quantity }) => {
+const ShoppingCartItem = ({
+	removeFromCart,
+	name,
+	brand,
+	price,
+	imageUrl,
+	quantity,
+	cartItem,
+}) => {
+	const cartCtx = useContext(CartContext);
 	return (
 		<StyledShoppingCartItem>
 			<StyledProduct>
@@ -88,13 +97,21 @@ const ShoppingCartItem = ({ name, brand, price, imageUrl, quantity }) => {
 				</div>
 			</StyledProduct>
 			<StyledOptions>
-				<StyledRemove>X</StyledRemove>
+				<StyledRemove
+					onClick={() => cartCtx.removeFromCart(cartCtx.cartItems, cartItem)}
+				>
+					X
+				</StyledRemove>
 				<StyledAmount>
-					<button>+</button>
+					<button onClick={() => cartCtx.increase(cartCtx.cartItems, cartItem)}>
+						+
+					</button>
 					{quantity}
-					<button>-</button>
+					<button onClick={() => cartCtx.decrease(cartCtx.cartItems, cartItem)}>
+						-
+					</button>
 				</StyledAmount>
-				<StyledSummary>{price}$</StyledSummary>
+				<StyledSummary>{price * quantity}$</StyledSummary>
 			</StyledOptions>
 		</StyledShoppingCartItem>
 	);

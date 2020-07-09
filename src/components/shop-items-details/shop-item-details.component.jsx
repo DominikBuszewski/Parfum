@@ -128,30 +128,6 @@ const ShopItemDetails = (props) => {
 		fetchData();
 	}, [props.match]);
 
-	// const addToCart = (props) => {
-	// 	const cartItemToAdd = {
-	// 		name: item.name,
-	// 		brand: item.brand,
-	// 		price: item.price,
-	// 		imageUrl: item.imageUrl,
-	// 		id: item.id,
-	// 	};
-
-	// 	const existingCartItem = cart.find(
-	// 		(cartItem) => cartItem.id === cartItemToAdd.id
-	// 	);
-	// 	if (existingCartItem) {
-	// 		return cart.map((cartItem) =>
-	// 			cartItem.id === cartItemToAdd.id
-	// 				? cartItem.push({ quantity: cartItemToAdd.quantity + 1 }) &&
-	// 				  console.log(cartItemToAdd)
-	// 				: cartItem
-	// 		);
-	// 	}
-
-	// 	return setCart((currentCart) => [...currentCart, cartItemToAdd]);
-	// };
-
 	return (
 		<StyledShopItemDetails>
 			<div>

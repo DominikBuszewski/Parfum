@@ -55,7 +55,6 @@ const ShoppingCartDropdown = ({ toggleCart, toggleHandler }) => {
 						name={cartItem.name}
 						quantity={cartItem.quantity}
 						imageUrl={cartItem.imageUrl}
-						increase={cartCtx.increaseQuantity}
 					/>
 				))}
 			</StyledShopItemsContainer>
