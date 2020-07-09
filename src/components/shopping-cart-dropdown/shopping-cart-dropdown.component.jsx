@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { colors } from "../../theme/main-styles.styles";
 import { Link } from "react-router-dom";
@@ -55,6 +55,7 @@ const ShoppingCartDropdown = ({ toggleCart, toggleHandler }) => {
 						name={cartItem.name}
 						quantity={cartItem.quantity}
 						imageUrl={cartItem.imageUrl}
+						cartItem={cartItem}
 					/>
 				))}
 			</StyledShopItemsContainer>

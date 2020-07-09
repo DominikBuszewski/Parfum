@@ -19,17 +19,14 @@ const StyledDirectoryContainer = styled.main`
 	@media ${device.desktop} {
 		flex-direction: row;
 		width: 80%;
-		padding: 50px;
+		padding: 2em;
 	}
 `;
 
 const StyledContainer = styled.div`
+	width: 100%;
 	display: flex;
 	flex-direction: column;
-
-	@media ${device.desktop} {
-		width: 85%;
-	}
 `;
 
 const StyledDirectoryMenu = styled.nav`
@@ -70,32 +67,35 @@ const StyledDirectoryHeader = styled.header`
 `;
 
 const StyledDirectory = styled.section`
+	width: 100%;
 	padding: 1em;
-	display: grid;
-	grid-auto-flow: row;
-	grid-template-columns: repeat(2, 50%);
-
-	@media ${device.desktop} {
-		grid-template-columns: repeat(4, 1fr);
-	}
+	display: flex;
+	flex-wrap: wrap;
 `;
 
 const ShopDirectory = () => {
 	const [items, setItems] = useState([]);
+	const [sort, setSort] = useState("id");
+
+	const sortBy = () => {
+		let selector = document.getElementById("sorting");
+		setSort(selector.value);
+	};
+
 	useEffect(() => {
 		const fetchData = async () => {
-			const data = await firestore.collection("items").orderBy("id").get();
+			const data = await firestore.collection("items").orderBy(`${sort}`).get();
 			setItems(data.docs.map((doc) => doc.data()));
 		};
 		fetchData();
-	}, []);
+	}, [sort]);
 
 	return (
 		<StyledDirectoryContainer>
 			<StyledDirectoryMenu>
 				<div>
 					<FooterOption
-						title={"FIlter by:"}
+						title={"Filter by:"}
 						props={["Brand", "Note", "Type"]}
 						styles
 					/>
@@ -106,13 +106,14 @@ const ShopDirectory = () => {
 					<h3>Category</h3>
 
 					<p>Sorty by:</p>
-					<select name="sort-by">
-						<option value="id">Standard</option>
-						<option value="name">Alfabetycznie</option>
+					<select id="sorting" name="sort-by" onChange={sortBy}>
+						<option value="id">Default</option>
+						<option value="name">Alphabetical</option>
+						<option value="price">Ascending Price</option>
 					</select>
 				</StyledDirectoryHeader>
 
-				<StyledDirectory>
+				<StyledDirectory id="box">
 					{items.map(({ id, name, brand, imageUrl, price }) => (
 						<Link to={`/shop/${id}`} key={id}>
 							<ShopItem
@@ -131,20 +132,3 @@ const ShopDirectory = () => {
 };
 
 export default ShopDirectory;
-
-// <ShopItem
-// name={"Aqua di Gio"}
-// brand={"Armani"}
-// imageUrl={aqua}
-// price={"34.99"}
-// />
-
-// {items.map((item) => (
-// 	<ShopItem
-// 		key={item.id}
-// 		name={item.name}
-// 		brand={item.brand}
-// 		imageUrl={item.imageUrl}
-// 		price={item.price}
-// 	/>
-// ))}

@@ -95,13 +95,7 @@ const StyledShopItemDetailsContainer = styled.section`
 		}
 
 		img {
-			width: 100%;
-			height: 100%;
-
-			@media ${device.desktop} {
-				width: 80%;
-				height: 80%;
-			}
+			height: 90%;
 		}
 
 		button {

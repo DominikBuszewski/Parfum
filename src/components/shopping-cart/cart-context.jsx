@@ -11,19 +11,12 @@ export const CartProvider = (props) => {
 	}
 
 	function removeFromCart(cartItems, cartItemToRemove) {
-		const existingCartItem = cartItems.find(
-			(cartItem) => cartItem.id === cartItemToRemove.id
-		);
-
 		return setCartItems(
 			cartItems.filter((cartItem) => cartItem.id !== cartItemToRemove.id)
 		);
 	}
 
 	function increase(cartItems, cartItemToAdd) {
-		const existingCartItem = cartItems.find(
-			(cartItem) => cartItem.id === cartItemToAdd.id
-		);
 		return setCartItems(
 			cartItems.map((cartItem) =>
 				cartItem.id === cartItemToAdd.id

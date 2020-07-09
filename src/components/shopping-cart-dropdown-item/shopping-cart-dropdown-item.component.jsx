@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-
+import left from "../../assets/icons/chevron-left-solid.svg";
+import right from "../../assets/icons/chevron-right-solid.svg";
 import { colors } from "../../theme/main-styles.styles";
+import { CartContext } from "../shopping-cart/cart-context";
 
 const StyledShoppingCartDropdownItem = styled.div`
 	width: 100%;
@@ -18,18 +20,50 @@ const StyledShoppingCartDropdownItem = styled.div`
 	}
 	div {
 		text-align: center;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100%;
+
+		span {
+			font-size: 1.3em;
+		}
+		button {
+			background: transparent;
+			border: none;
+			padding: 0.3em;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			outline: transparent;
+
+			img {
+				height: 1.3em;
+			}
+		}
 	}
 `;
 
-const ShoppingCartDropdownItem = ({ remove, quantity, name, imageUrl }) => {
+const ShoppingCartDropdownItem = ({
+	cartItem,
+	remove,
+	quantity,
+	name,
+	imageUrl,
+}) => {
+	const cartCtx = useContext(CartContext);
 	return (
 		<StyledShoppingCartDropdownItem>
 			<img src={imageUrl} alt="" />
 			<div>{name}</div>
 			<div>
-				<button>+</button>
+				<button onClick={() => cartCtx.decrease(cartCtx.cartItems, cartItem)}>
+					<img src={left} alt="" />
+				</button>
 				<span>{quantity}</span>
-				<button onClick={remove}>-</button>
+				<button onClick={() => cartCtx.increase(cartCtx.cartItems, cartItem)}>
+					<img src={right} alt="" />
+				</button>
 			</div>
 		</StyledShoppingCartDropdownItem>
 	);

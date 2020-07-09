@@ -7,10 +7,8 @@ const StyledShopItem = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	padding: 1em;
-
-	@media ${device.desktop} {
-	}
+	padding: 0.4em;
+	margin: 0.4em;
 
 	h2 {
 		text-align: center;
@@ -22,8 +20,18 @@ const StyledShopItem = styled.div`
 		}
 	}
 
-	img {
+	div {
+		width: 15vh;
 		height: 25vh;
+
+		@media ${device.desktop} {
+			width: 20vh;
+		}
+	}
+
+	img {
+		height: 100%;
+		width: 100%;
 	}
 
 	span {
@@ -44,7 +52,9 @@ const StyledShopItem = styled.div`
 const ShopItem = ({ name, brand, imageUrl, price }) => (
 	<StyledShopItem>
 		<h2>{name}</h2>
-		<img src={imageUrl} alt="" />
+		<div>
+			<img src={imageUrl} alt="" />
+		</div>
 		<h2>{brand}</h2>
 		<span>{price}$ for 50ml Bottle</span>
 	</StyledShopItem>

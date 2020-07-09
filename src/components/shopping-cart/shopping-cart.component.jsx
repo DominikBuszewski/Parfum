@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { colors, device } from "../../theme/main-styles.styles";
 import ShoppingCartItem from "../shopping-cart-item/shopping-cart-item.component";

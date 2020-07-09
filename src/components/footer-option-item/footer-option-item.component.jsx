@@ -4,12 +4,12 @@ import { colors, device } from "../../theme/main-styles.styles";
 
 const StyledLi = styled.li`
 	list-style: none;
-	font-size: 1.2em;
+	font-size: 1em;
 	border-bottom: 1px solid black;
 	font-family: "montserrat";
 
 	@media ${device.desktop} {
-		font-size: 1.5em;
+		font-size: 1.3em;
 
 		:hover {
 			border-bottom: 3px solid ${colors.dark};
