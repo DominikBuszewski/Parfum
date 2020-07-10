@@ -56,8 +56,6 @@ const Menu = ({ open, setOpen }) => (
 		<MenuElement to="/shop">Shop</MenuElement>
 		<MenuElement to="">Directory</MenuElement>
 		<MenuElement to="">Top 10</MenuElement>
-		<MenuElement to="">Women</MenuElement>
-		<MenuElement to="">Man</MenuElement>
 		<MenuElement to="">New</MenuElement>
 		<MenuElement to="">Promotions</MenuElement>
 	</Categories>

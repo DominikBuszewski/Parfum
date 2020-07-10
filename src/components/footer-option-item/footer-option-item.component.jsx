@@ -8,14 +8,13 @@ const StyledLi = styled.li`
 	border-bottom: 1px solid black;
 	font-family: "montserrat";
 
-	@media ${device.desktop} {
-		font-size: 1.3em;
+
 
 		:hover {
 			border-bottom: 3px solid ${colors.dark};
 			/* color: ${colors.light}; */
 		}
-	}
+	
 `;
 
 const FooterOptionItem = ({ name }) => <StyledLi>{name}</StyledLi>;

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { device } from "../../theme/main-styles.styles";
+import { device, colors } from "../../theme/main-styles.styles";
 
 const StyledShopItem = styled.div`
 	display: flex;
@@ -14,6 +14,7 @@ const StyledShopItem = styled.div`
 		text-align: center;
 		font-size: 0.8em;
 		font-weight: bold;
+		color: ${colors.dark};
 
 		@media ${device.desktop} {
 			font-size: 1em;
@@ -37,7 +38,7 @@ const StyledShopItem = styled.div`
 	span {
 		font-family: "montserrat";
 		font-size: 0.8em;
-
+		color: ${colors.dark};
 		@media ${device.desktop} {
 			font-size: 1em;
 		}
@@ -56,7 +57,7 @@ const ShopItem = ({ name, brand, imageUrl, price }) => (
 			<img src={imageUrl} alt="" />
 		</div>
 		<h2>{brand}</h2>
-		<span>{price}$ for 50ml Bottle</span>
+		<span>{price}$</span>
 	</StyledShopItem>
 );
 

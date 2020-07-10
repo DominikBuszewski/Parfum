@@ -19,10 +19,12 @@ const StyledFooterOptions = styled.footer`
 	padding: 15px;
 
 	@media ${device.desktop} {
+		width: 70%;
 		height: 50vh;
 		padding: 50px;
+		align-self: center;
 		display: flex;
-		justify-content: space-around;
+		justify-content: center;
 		align-items: center;
 	}
 `;
@@ -50,9 +52,17 @@ const About = styled.section`
 	align-items: center;
 	padding: 15px;
 
+	@media ${device.desktop} {
+		width: 70%;
+		align-self: center;
+	}
+
 	h2 {
 		font-size: 2em;
 		margin-bottom: 2em;
+		border-bottom: 1px solid ${colors.dark};
+		width: 100%;
+		text-align: center;
 	}
 
 	div {
@@ -65,7 +75,7 @@ const About = styled.section`
 
 			@media ${device.desktop} {
 				width: 50%;
-				font-size: 1.5em;
+				font-size: 1em;
 				letter-spacing: 3px;
 			}
 		}
@@ -87,6 +97,16 @@ const Footer = () => {
 			<About>
 				<h2>About US</h2>
 				<div>
+					<p>
+						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam
+						excepturi earum eaque nostrum sit odio mollitia nesciunt. Illo, hic
+						excepturi! Inventore rem facere saepe? Praesentium aliquid tenetur
+						ullam dolores quibusdam? Lorem ipsum dolor sit amet consectetur
+						adipisicing elit. Nihil commodi praesentium cupiditate ut vel ipsa
+						quae, voluptatem dolore sit pariatur, deserunt voluptate
+						reprehenderit expedita! Cum in quis aspernatur facere inventore!
+					</p>
+					<br />
 					<p>
 						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam
 						excepturi earum eaque nostrum sit odio mollitia nesciunt. Illo, hic

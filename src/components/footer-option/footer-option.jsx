@@ -60,7 +60,7 @@ const StyledButton = styled.button`
 const FooterOption = ({ title, props }) => {
 	const [open, setOpen] = useState(false);
 	const toggleHandler = () => {
-		setOpen(!open);
+		setOpen((currentStatus) => !currentStatus);
 	};
 	// const props = ["UPS", "DHL", "FEDEX", "TNT"];
 	return (

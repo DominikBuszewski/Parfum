@@ -10,7 +10,7 @@
 // }
 
 const size = {
-	desktop: "820px",
+	desktop: "1020px",
 };
 
 export const device = {

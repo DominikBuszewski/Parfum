@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import styled from "styled-components";
 import { colors, device } from "../../theme/main-styles.styles";
-import FooterOption from "../footer-option/footer-option";
-import ShopItem from "../shop-item/shop-item.component";
 
+import ShopItem from "../shop-item/shop-item.component";
+import { FilterContext } from "./shop-directory-context";
 import { firestore } from "../../firebase/firebase";
 import { Link } from "react-router-dom";
+import ShopDirectoryFilterMenu from "../shop-directory-filter-menu/shop-directory-filter-menu.component";
 
 const StyledDirectoryContainer = styled.main`
 	background-color: ${colors.light};
@@ -71,11 +72,16 @@ const StyledDirectory = styled.section`
 	padding: 1em;
 	display: flex;
 	flex-wrap: wrap;
+	text-decoration: none;
 `;
 
+const StyledLink = styled(Link)`
+	text-decoration: none;
+`;
 const ShopDirectory = () => {
 	const [items, setItems] = useState([]);
 	const [sort, setSort] = useState("id");
+	const filterCtx = useContext(FilterContext);
 
 	const sortBy = () => {
 		let selector = document.getElementById("sorting");
@@ -83,27 +89,57 @@ const ShopDirectory = () => {
 	};
 
 	useEffect(() => {
-		const fetchData = async () => {
-			const data = await firestore.collection("items").orderBy(`${sort}`).get();
-			setItems(data.docs.map((doc) => doc.data()));
-		};
-		fetchData();
-	}, [sort]);
+		if (filterCtx.filter === "") {
+			const fetchData = async () => {
+				const data = await firestore
+					.collection("items")
+					.orderBy(`${sort}`)
+					.get();
+				setItems(data.docs.map((doc) => doc.data()));
+			};
+			fetchData();
+		} else if (filterCtx.filter === "Man") {
+			const fetchFilteredForManData = async () => {
+				const data = await firestore
+					.collection("items")
+					.where("for", "==", "man")
+					.orderBy(`${sort}`)
+					.get();
+				setItems(data.docs.map((doc) => doc.data()));
+			};
+			fetchFilteredForManData();
+		} else if (filterCtx.filter === "Woman") {
+			const fetchFilteredForWomanData = async () => {
+				const data = await firestore
+					.collection("items")
+					.where("for", "==", "woman")
+					.orderBy(`${sort}`)
+					.get();
+				setItems(data.docs.map((doc) => doc.data()));
+			};
+			fetchFilteredForWomanData();
+		} else {
+			const fetchData = async () => {
+				const data = await firestore
+					.collection("items")
+					.orderBy(`${sort}`)
+					.get();
+				setItems(data.docs.map((doc) => doc.data()));
+			};
+			fetchData();
+		}
+	}, [filterCtx, sort]);
 
 	return (
 		<StyledDirectoryContainer>
 			<StyledDirectoryMenu>
 				<div>
-					<FooterOption
-						title={"Filter by:"}
-						props={["Brand", "Note", "Type"]}
-						styles
-					/>
+					<ShopDirectoryFilterMenu />
 				</div>
 			</StyledDirectoryMenu>
 			<StyledContainer>
 				<StyledDirectoryHeader>
-					<h3>Category</h3>
+					<h3>Category: {filterCtx.filter}</h3>
 
 					<p>Sorty by:</p>
 					<select id="sorting" name="sort-by" onChange={sortBy}>
@@ -115,7 +151,7 @@ const ShopDirectory = () => {
 
 				<StyledDirectory id="box">
 					{items.map(({ id, name, brand, imageUrl, price }) => (
-						<Link to={`/shop/${id}`} key={id}>
+						<StyledLink to={`/shop/${id}`} key={id}>
 							<ShopItem
 								key={id}
 								name={name}
@@ -123,7 +159,7 @@ const ShopDirectory = () => {
 								imageUrl={imageUrl}
 								price={price}
 							/>
-						</Link>
+						</StyledLink>
 					))}
 				</StyledDirectory>
 			</StyledContainer>
