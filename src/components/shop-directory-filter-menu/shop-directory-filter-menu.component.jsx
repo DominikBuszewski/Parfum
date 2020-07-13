@@ -11,15 +11,15 @@ const ShopDirectoryFilterMenu = () => {
 			<h2>Categories</h2>
 			<StyledUl>
 				<ShopDirectoryMenuItem
-					title={"For who?"}
+					title={"for"}
 					subcategories={["Man", "Woman", "Unisex"]}
 				/>
 				<ShopDirectoryMenuItem
-					title={"Brand"}
-					subcategories={["Armani", "Chanel", "YSL"]}
+					title={"brand"}
+					subcategories={["Armani", "Chanel", "Mugler", "Prada", "YSL"]}
 				/>
 				<ShopDirectoryMenuItem
-					title={"Type"}
+					title={"type"}
 					subcategories={["Fresh", "Sweet"]}
 				/>
 			</StyledUl>

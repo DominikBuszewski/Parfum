@@ -15,7 +15,7 @@ const ShopDirectoryMenuItem = ({ title, subcategories }) => {
 			<StyledDiv>
 				<p>{title}</p>
 			</StyledDiv>
-			<ul>
+			<ul onClick={() => filterCtx.categoryHandler(title)}>
 				{subcategories.map((sub) => (
 					<li key={Math.random()} onClick={() => filterCtx.filterHandler(sub)}>
 						{sub}

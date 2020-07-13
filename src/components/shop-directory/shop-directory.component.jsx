@@ -98,36 +98,50 @@ const ShopDirectory = () => {
 				setItems(data.docs.map((doc) => doc.data()));
 			};
 			fetchData();
-		} else if (filterCtx.filter === "Man") {
-			const fetchFilteredForManData = async () => {
-				const data = await firestore
-					.collection("items")
-					.where("for", "==", "man")
-					.orderBy(`${sort}`)
-					.get();
-				setItems(data.docs.map((doc) => doc.data()));
-			};
-			fetchFilteredForManData();
-		} else if (filterCtx.filter === "Woman") {
-			const fetchFilteredForWomanData = async () => {
-				const data = await firestore
-					.collection("items")
-					.where("for", "==", "woman")
-					.orderBy(`${sort}`)
-					.get();
-				setItems(data.docs.map((doc) => doc.data()));
-			};
-			fetchFilteredForWomanData();
 		} else {
 			const fetchData = async () => {
 				const data = await firestore
 					.collection("items")
+					.where(`${filterCtx.category}`, "==", `${filterCtx.filter}`)
 					.orderBy(`${sort}`)
 					.get();
 				setItems(data.docs.map((doc) => doc.data()));
 			};
+			console.log(filterCtx.filter);
+			console.log(filterCtx.category);
 			fetchData();
 		}
+
+		// else if (filterCtx.filter === "Man") {
+		// 	const fetchFilteredForManData = async () => {
+		// 		const data = await firestore
+		// 			.collection("items")
+		// 			.where("for", "==", "man")
+		// 			.orderBy(`${sort}`)
+		// 			.get();
+		// 		setItems(data.docs.map((doc) => doc.data()));
+		// 	};
+		// 	fetchFilteredForManData();
+		// } else if (filterCtx.filter === "Woman") {
+		// 	const fetchFilteredForWomanData = async () => {
+		// 		const data = await firestore
+		// 			.collection("items")
+		// 			.where("for", "==", "woman")
+		// 			.orderBy(`${sort}`)
+		// 			.get();
+		// 		setItems(data.docs.map((doc) => doc.data()));
+		// 	};
+		// 	fetchFilteredForWomanData();
+		// } else {
+		// 	const fetchData = async () => {
+		// 		const data = await firestore
+		// 			.collection("items")
+		// 			.orderBy(`${sort}`)
+		// 			.get();
+		// 		setItems(data.docs.map((doc) => doc.data()));
+		// 	};
+		// 	fetchData();
+		// }
 	}, [filterCtx, sort]);
 
 	return (
