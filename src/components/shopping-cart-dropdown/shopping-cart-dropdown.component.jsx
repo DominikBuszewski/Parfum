@@ -32,6 +32,11 @@ const StyledShopItemsContainer = styled.div`
 	height: 80%;
 	border-top: 2px solid ${colors.secondary};
 	overflow-y: scroll;
+
+	h4 {
+		text-align: center;
+		margin: 2em auto;
+	}
 `;
 const StyledLink = styled(Link)`
 	text-decoration: none;
@@ -49,15 +54,19 @@ const ShoppingCartDropdown = ({ toggleCart, toggleHandler }) => {
 	return (
 		<StyledDropdown toggleCart={toggleCart}>
 			<StyledShopItemsContainer>
-				{cartCtx.cartItems.map((cartItem) => (
-					<ShoppingCartDropdownItem
-						key={cartItem.id}
-						name={cartItem.name}
-						quantity={cartItem.quantity}
-						imageUrl={cartItem.imageUrl}
-						cartItem={cartItem}
-					/>
-				))}
+				{cartCtx.cartItems.length < 1 ? (
+					<h4>Your cart is emmpty</h4>
+				) : (
+					cartCtx.cartItems.map((cartItem) => (
+						<ShoppingCartDropdownItem
+							key={cartItem.id}
+							name={cartItem.name}
+							quantity={cartItem.quantity}
+							imageUrl={cartItem.imageUrl}
+							cartItem={cartItem}
+						/>
+					))
+				)}
 			</StyledShopItemsContainer>
 			<StyledLink to="/cart">
 				<Button name={"TO CHECKOUT"} onClick={toggleHandler} />
