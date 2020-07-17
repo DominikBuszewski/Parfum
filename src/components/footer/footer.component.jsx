@@ -16,7 +16,7 @@ const StyledFooter = styled.div`
 const StyledFooterOptions = styled.footer`
 	min-height: 40vh;
 	width: 100%;
-	padding: 15px;
+	padding: 1em;
 
 	@media ${device.desktop} {
 		width: 70%;

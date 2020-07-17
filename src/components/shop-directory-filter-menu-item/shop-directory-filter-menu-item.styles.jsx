@@ -6,12 +6,12 @@ export const StyledLi = styled.li`
 	text-decoration: none;
 	width: 30%;
 	padding: 2px;
+	background-color: ${colors.light};
 	-webkit-box-shadow: 0px 1px 11px -9px rgba(0, 0, 0, 0.75);
 	-moz-box-shadow: 0px 1px 11px -9px rgba(0, 0, 0, 0.75);
 	box-shadow: 0px 1px 11px -9px rgba(0, 0, 0, 0.75);
 
 	:hover {
-		opacity: 0.9;
 		cursor: pointer;
 
 		ul {

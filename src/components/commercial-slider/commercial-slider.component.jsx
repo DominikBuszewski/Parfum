@@ -1,19 +1,22 @@
 import React from "react";
 import Slider from "infinite-react-carousel";
-import blue from "../../assets/images/bleu-de-chanel-parfum.jpg";
-import chanel from "../../assets/images/chanel.jpeg";
+import armani from "../../assets/images/armani.jpg";
+import libre from "../../assets/images/libre.jpg";
+import lndl from "../../assets/images/ysly.jpg";
+import alien from "../../assets/images/alien.jpg";
 import styled from "styled-components";
 import { device } from "../../theme/main-styles.styles";
+import { Link } from "react-router-dom";
 
 const SliderContainer = styled.div`
-	width: 100%;
+	width: 96vw;
 	padding: 1em;
 
 	@media ${device.desktop} {
-		width: 40%;
+		width: 80vw;
 	}
 `;
-const BlueDeChanelImage = styled.img`
+const StyledImage = styled.img`
 	width: 100%;
 	margin-top: 2vh;
 	padding: 1em;
@@ -26,6 +29,7 @@ const BlueDeChanelImage = styled.img`
 const CommercialSlider = () => (
 	<SliderContainer>
 		<Slider
+			autoplay={true}
 			autoplaySpeed={6000}
 			dots={true}
 			duration={500}
@@ -34,13 +38,24 @@ const CommercialSlider = () => (
 			arrows={false}
 		>
 			<div>
-				<BlueDeChanelImage src={chanel} />
+				<Link to="/shop/15">
+					<StyledImage src={libre} />
+				</Link>
 			</div>
 			<div>
-				<BlueDeChanelImage src={blue} />
+				<Link to="/shop/1">
+					<StyledImage src={armani} />
+				</Link>
 			</div>
 			<div>
-				<BlueDeChanelImage src={blue} />
+				<Link to="/shop/14">
+					<StyledImage src={lndl} />
+				</Link>
+			</div>
+			<div>
+				<Link to="/shop/16">
+					<StyledImage src={alien} />
+				</Link>
 			</div>
 		</Slider>
 	</SliderContainer>

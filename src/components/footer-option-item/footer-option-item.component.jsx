@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { colors, device } from "../../theme/main-styles.styles";
+import { colors } from "../../theme/main-styles.styles";
 
 const StyledLi = styled.li`
 	list-style: none;

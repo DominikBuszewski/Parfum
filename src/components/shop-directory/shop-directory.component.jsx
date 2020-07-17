@@ -56,9 +56,27 @@ const StyledDirectoryHeader = styled.header`
 
 	h3 {
 		width: 50%;
+		font-size: 0.8em;
 
 		@media ${device.desktop} {
 			width: 60%;
+			font-size: 1.2em;
+		}
+	}
+
+	p {
+		font-size: 0.8em;
+	}
+	button {
+		margin: 0 5px;
+		background-color: white;
+		border: 1px solid ${colors.dark};
+		width: 4em;
+		text-align: center;
+
+		@media ${device.desktop} {
+			margin: 0 auto;
+			width: 8em;
 		}
 	}
 
@@ -89,7 +107,7 @@ const ShopDirectory = () => {
 	};
 
 	useEffect(() => {
-		if (filterCtx.filter === "") {
+		if (filterCtx.filter === "" || filterCtx.filter === "All") {
 			const fetchData = async () => {
 				const data = await firestore
 					.collection("items")
@@ -107,41 +125,8 @@ const ShopDirectory = () => {
 					.get();
 				setItems(data.docs.map((doc) => doc.data()));
 			};
-			console.log(filterCtx.filter);
-			console.log(filterCtx.category);
 			fetchData();
 		}
-
-		// else if (filterCtx.filter === "Man") {
-		// 	const fetchFilteredForManData = async () => {
-		// 		const data = await firestore
-		// 			.collection("items")
-		// 			.where("for", "==", "man")
-		// 			.orderBy(`${sort}`)
-		// 			.get();
-		// 		setItems(data.docs.map((doc) => doc.data()));
-		// 	};
-		// 	fetchFilteredForManData();
-		// } else if (filterCtx.filter === "Woman") {
-		// 	const fetchFilteredForWomanData = async () => {
-		// 		const data = await firestore
-		// 			.collection("items")
-		// 			.where("for", "==", "woman")
-		// 			.orderBy(`${sort}`)
-		// 			.get();
-		// 		setItems(data.docs.map((doc) => doc.data()));
-		// 	};
-		// 	fetchFilteredForWomanData();
-		// } else {
-		// 	const fetchData = async () => {
-		// 		const data = await firestore
-		// 			.collection("items")
-		// 			.orderBy(`${sort}`)
-		// 			.get();
-		// 		setItems(data.docs.map((doc) => doc.data()));
-		// 	};
-		// 	fetchData();
-		// }
 	}, [filterCtx, sort]);
 
 	return (
@@ -154,7 +139,9 @@ const ShopDirectory = () => {
 			<StyledContainer>
 				<StyledDirectoryHeader>
 					<h3>Category: {filterCtx.filter}</h3>
-
+					<button onClick={() => filterCtx.filterHandler("All")}>
+						Show All
+					</button>
 					<p>Sorty by:</p>
 					<select id="sorting" name="sort-by" onChange={sortBy}>
 						<option value="id">Default</option>

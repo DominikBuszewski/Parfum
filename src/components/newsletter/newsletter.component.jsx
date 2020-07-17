@@ -53,6 +53,10 @@ const StyledNewsletterInput = styled.input`
 	font-size: 1.2em;
 	font-family: "montserrat";
 
+	::placeholder {
+		font-size: 0.6em;
+	}
+
 	@media ${device.desktop} {
 		height: 40%;
 	}

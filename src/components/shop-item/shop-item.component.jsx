@@ -9,6 +9,9 @@ const StyledShopItem = styled.div`
 	align-items: center;
 	padding: 0.4em;
 	margin: 0.4em;
+	-webkit-box-shadow: 0px 1px 11px -9px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 0px 1px 11px -9px rgba(0, 0, 0, 0.75);
+	box-shadow: 0px 1px 11px -9px rgba(0, 0, 0, 0.75);
 
 	h2 {
 		text-align: center;
@@ -23,10 +26,10 @@ const StyledShopItem = styled.div`
 
 	div {
 		width: 15vh;
-		height: 25vh;
+		height: 22vh;
 
 		@media ${device.desktop} {
-			width: 20vh;
+			width: 18vh;
 		}
 	}
 

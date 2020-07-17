@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { colors, device } from "../../theme/main-styles.styles";
 import ShoppingCartItem from "../shopping-cart-item/shopping-cart-item.component";
 import { CartContext } from "./cart-context";
-
+import Button from "../custom-button/custom-button.component";
 const StyledShoppingCart = styled.section`
 	min-height: 40vh;
 	width: 98%;
@@ -19,8 +19,13 @@ const H2 = styled.h2`
 	text-align: left;
 	font-size: 1em;
 	border-bottom: 2px solid ${colors.dark};
+
 	@media ${device.desktop} {
 		font-size: 1.3em;
+	}
+
+	button {
+		margin: 0.2em;
 	}
 `;
 
@@ -99,9 +104,15 @@ const ShoppingCart = () => {
 				Total price:
 				{cartCtx.cartItems.length > 0 ? fixedPrice : "0"}$
 			</H2>
-			<H2>
-				<button onClick={cartCtx.clearCart}>Clear cart</button>
-			</H2>
+
+			{cartCtx.cartItems.length < 1 ? (
+				<H2>Your cart is currently empty</H2>
+			) : (
+				<H2>
+					<Button onClick={cartCtx.clearCart} name={"Clear cart"} />
+				</H2>
+			)}
+
 			<ShoppingCartHeader>
 				<CartHeaderElement>Product</CartHeaderElement>
 				<CartHeaderElement>Remove</CartHeaderElement>

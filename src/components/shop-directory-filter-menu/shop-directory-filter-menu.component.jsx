@@ -16,11 +16,11 @@ const ShopDirectoryFilterMenu = () => {
 				/>
 				<ShopDirectoryMenuItem
 					title={"brand"}
-					subcategories={["Armani", "Chanel", "Mugler", "Prada", "YSL"]}
+					subcategories={["Armani", "Chanel", "Dior", "Mugler", "Prada", "YSL"]}
 				/>
 				<ShopDirectoryMenuItem
-					title={"type"}
-					subcategories={["Fresh", "Sweet"]}
+					title={"notes"}
+					subcategories={["fresh", "sweet", "aromatic"]}
 				/>
 			</StyledUl>
 		</StyledDirectoryFilterMenu>

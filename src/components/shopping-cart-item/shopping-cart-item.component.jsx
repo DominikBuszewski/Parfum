@@ -8,10 +8,13 @@ import right from "../../assets/icons/chevron-right-solid.svg";
 const StyledShoppingCartItem = styled.div`
 	height: 40vh;
 	width: 100%;
+	display: flex;
+	flex-direction: column;
 	border-bottom: 2px solid green;
+	justify-content: space-around;
 
 	@media ${device.desktop} {
-		display: flex;
+		flex-direction: row;
 		height: 25vh;
 	}
 `;
@@ -122,9 +125,9 @@ const ShoppingCartItem = ({
 					<img src={imageUrl} alt="" />
 				</div>
 				<div>
-					<p>{name}</p>
-					<p>{brand}</p>
-					<p>50ml</p>
+					<p>Name: {name}</p>
+					<p>Brand: {brand}</p>
+					<p>Price per bottle: {price}</p>
 				</div>
 			</StyledProduct>
 			<StyledOptions>

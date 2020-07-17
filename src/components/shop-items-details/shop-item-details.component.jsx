@@ -121,7 +121,7 @@ const ShopItemDetails = (props) => {
 			const data = await firestore.collection("items").get();
 			const mapData = data.docs.map((doc) => doc.data());
 			setItem(
-				mapData.find((callback, index) => index == props.match.params.id)
+				mapData.find((callback, index) => index === props.match.params.id * 1)
 			);
 		};
 		fetchData();
@@ -131,7 +131,7 @@ const ShopItemDetails = (props) => {
 		<StyledShopItemDetails>
 			<div>
 				<StyledLink to="/shop">
-					<Button name="Back" />
+					<Button name="Back to Shop" />
 				</StyledLink>
 				<StyledLink to="/cart">
 					<Button name="To checkout" />

@@ -129,7 +129,7 @@ const Header = ({ currentUser }) => {
 					<Hamburger open={open} setOpen={setOpen} />
 				</NavIcons>
 			</Navigation>
-			<SearchBar placeholder="Type in item you want to search for" />
+			<SearchBar placeholder="This feature is still in development" />
 			<Menu open={open} setOpen={setOpen} />
 			<ShoppingCartDropdown
 				toggleCart={toggleCart}
