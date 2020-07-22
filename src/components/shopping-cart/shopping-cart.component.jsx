@@ -24,6 +24,13 @@ const H2 = styled.h2`
 		font-size: 1.3em;
 	}
 
+	div {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0.3em;
+	}
+
 	button {
 		margin: 0.2em;
 	}
@@ -109,7 +116,14 @@ const ShoppingCart = () => {
 				<H2>Your cart is currently empty</H2>
 			) : (
 				<H2>
-					<Button onClick={cartCtx.clearCart} name={"Clear cart"} />
+					<div>
+						<Button onClick={cartCtx.clearCart} name={"Clear cart"} />
+						<Button
+							name={"Pay now"}
+							primary
+							onClick={() => alert("Succesfull payment")}
+						/>
+					</div>
 				</H2>
 			)}
 

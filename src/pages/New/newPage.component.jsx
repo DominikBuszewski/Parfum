@@ -19,7 +19,7 @@ const NewPage = () => {
 			newCtx.setNewItems(mapData);
 		};
 		fetchData();
-	}, []);
+	});
 	return (
 		<div>
 			<BanerContainer>

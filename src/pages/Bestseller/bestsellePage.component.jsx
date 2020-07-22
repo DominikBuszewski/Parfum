@@ -21,7 +21,7 @@ const BestsellerPage = () => {
 			bestCtx.setBestItems(mapData);
 		};
 		fetchData();
-	}, []);
+	});
 	return (
 		<div>
 			<BanerContainer>

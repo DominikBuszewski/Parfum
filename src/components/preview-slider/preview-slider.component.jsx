@@ -97,7 +97,7 @@ const PreviewSlider = () => {
 			bestCtx.setBestItems(mapData);
 		};
 		fetchData();
-	}, []);
+	});
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -110,7 +110,7 @@ const PreviewSlider = () => {
 			newCtx.setNewItems(mapData);
 		};
 		fetchData();
-	}, []);
+	});
 
 	return (
 		<StyledSlider>
